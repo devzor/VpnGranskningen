@@ -4,5 +4,5 @@ dockerfilePath = "Dockerfile"
 
 [deploy]
 startCommand = "dotnet VpnGranskningen.Api.dll"
-healthcheckPath = "/health"
+healthcheckPath = "/api/vpns"
 restartPolicyType = "on_failure"
