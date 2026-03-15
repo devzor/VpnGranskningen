@@ -1,0 +1,27 @@
+# Next.js
+frontend/.next/
+frontend/node_modules/
+frontend/.env*.local
+
+# .NET
+backend/**/bin/
+backend/**/obj/
+backend/**/*.user
+backend/.vs/
+
+# Python
+ai/__pycache__/
+ai/**/__pycache__/
+ai/.venv/
+ai/.env
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
+
+# Windows reserved device name (skapas av misstag på Windows)
+nul

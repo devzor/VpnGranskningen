@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>9c6f3a6a-debf-4ab0-8cc0-46967ea6fd1a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VpnGranskningen.Core\VpnGranskningen.Core.csproj" />
+    <ProjectReference Include="..\VpnGranskningen.Infrastructure\VpnGranskningen.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

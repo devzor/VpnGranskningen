@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="VpnGranskningen.Api/VpnGranskningen.Api.csproj" />
+  <Project Path="VpnGranskningen.Core/VpnGranskningen.Core.csproj" />
+  <Project Path="VpnGranskningen.Infrastructure/VpnGranskningen.Infrastructure.csproj" />
+  <Project Path="VpnGranskningen.Tests/VpnGranskningen.Tests.csproj" />
+</Solution>
