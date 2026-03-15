@@ -14,10 +14,14 @@ builder.Services.AddCors(opts => opts.AddDefaultPolicy(policy =>
 var app = builder.Build();
 
 // Kör SQL-migrationer automatiskt vid uppstart
-var schemaDir = Path.Combine(
-    AppContext.BaseDirectory,
-    "..", "..", "..", "..",
-    "VpnGranskningen.Infrastructure", "Persistence", "Schema");
+// I publish/Docker-build kopieras SQL-filerna till Persistence/Schema/ relativt AppContext.BaseDirectory
+var schemaDir = Path.Combine(AppContext.BaseDirectory, "Persistence", "Schema");
+// Fallback för lokal utveckling (körs från bin/Debug/net10.0/)
+if (!Directory.Exists(schemaDir))
+    schemaDir = Path.GetFullPath(Path.Combine(
+        AppContext.BaseDirectory,
+        "..", "..", "..", "..",
+        "VpnGranskningen.Infrastructure", "Persistence", "Schema"));
 
 if (Directory.Exists(schemaDir))
 {
