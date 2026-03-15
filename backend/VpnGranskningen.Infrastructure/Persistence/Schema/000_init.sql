@@ -2,7 +2,7 @@
 -- 000_init.sql – Komplett initialiseringsskript (fresh install)
 -- Skapar slutgiltigt schema + all seed-data i ett steg.
 -- Markerar sedan alla efterföljande migrations (001–018) som
--- redan körda så att MigrationRunner hoppar över dem.
+-- redan körda så att MigrationRunner hoppar över dem
 -- ============================================================
 
 -- ------------------------------------------------------------

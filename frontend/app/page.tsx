@@ -1,40 +1,71 @@
 import Quiz from "@/components/quiz/Quiz";
 
+const TRUST_CHIPS = [
+  { icon: "✓", text: "12 leverantörer granskade" },
+  { icon: "✓", text: "Inga dolda provisioner" },
+  { icon: "✓", text: "Uppdaterat mars 2026" },
+];
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <main className="max-w-6xl mx-auto px-6 py-16 space-y-14">
+    <div className="min-h-screen">
 
-        {/* Hero */}
-        <section className="space-y-4 max-w-2xl">
-          <h1 className="text-3xl font-semibold text-gray-900 leading-snug tracking-tight">
-            Hitta rätt VPN – utan reklamsnack
-          </h1>
-          <p className="text-base text-gray-500 leading-relaxed">
-            Vi granskar no-logs-policy, jurisdiktion, oberoende audits och pris.
-            Inga dolda provisioner som styr resultaten – välj din profil nedan så
-            matchar vi dig med rätt VPN.
-          </p>
-        </section>
+      {/* Hero */}
+      <section className="bg-gray-950 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-8">
+          <div className="space-y-4 max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+              Oberoende VPN-granskning
+            </p>
+            <h1 className="text-3xl sm:text-5xl font-bold leading-tight tracking-tight">
+              Hitta rätt VPN –{" "}
+              <span className="text-slate-400">utan reklamsnack</span>
+            </h1>
+            <p className="text-base text-gray-400 leading-relaxed max-w-xl">
+              Vi granskar no-logs-policy, jurisdiktion, oberoende audits och pris.
+              Välj din profil nedan så matchar vi dig med rätt VPN.
+            </p>
+          </div>
+
+          {/* Trust chips */}
+          <div className="flex flex-wrap gap-3">
+            {TRUST_CHIPS.map(({ icon, text }) => (
+              <span
+                key={text}
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full px-3 py-1.5"
+              >
+                <span className="text-emerald-400">{icon}</span>
+                {text}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main content */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-14 space-y-10 sm:space-y-14">
 
         {/* Quiz */}
         <section>
-          <h2 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-6">
-            Vad är du ute efter?
-          </h2>
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold text-gray-900">Vad är du ute efter?</h2>
+            <p className="text-sm text-gray-500 mt-1">Välj din profil för personliga rekommendationer, eller bläddra i alla leverantörer nedan.</p>
+          </div>
           <Quiz />
         </section>
 
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 mt-24">
-        <div className="max-w-6xl mx-auto px-6 py-8 text-xs text-gray-400 flex flex-col sm:flex-row justify-between gap-2">
-          <span>© 2026 VpnGranskningen. Oberoende granskning.</span>
-          <span>
-            Sajten finansieras via affiliate-länkar. Det påverkar inte våra
-            betyg eller rekommendationer.
-          </span>
+      <footer className="bg-gray-950 text-gray-400 mt-16">
+        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between gap-4 text-xs">
+          <div className="space-y-1">
+            <p className="text-white font-semibold text-sm">VpnGranskningen</p>
+            <p>© 2026 Oberoende granskning.</p>
+          </div>
+          <p className="max-w-sm text-right">
+            Sajten finansieras via affiliate-länkar. Det påverkar inte våra betyg eller rekommendationer.
+          </p>
         </div>
       </footer>
 
