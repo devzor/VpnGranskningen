@@ -1,0 +1,8 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "dotnet VpnGranskningen.Api.dll"
+healthcheckPath = "/health"
+restartPolicyType = "on_failure"
