@@ -45,7 +45,7 @@ const PROFILE_LABELS: Record<UserProfile, string> = {
 // ---------------------------------------------------------------------------
 // Tabell
 // ---------------------------------------------------------------------------
-type SortCol = "name" | "monthly" | "yearly" | "twoyear" | "speed" | "servers";
+type SortCol = "name" | "monthly" | "yearly" | "twoyear";
 type SortDir = "asc" | "desc";
 
 function sortVal(p: VpnSummaryDto, col: SortCol): string | number {
@@ -54,8 +54,6 @@ function sortVal(p: VpnSummaryDto, col: SortCol): string | number {
     case "monthly": return p.monthlyIntroPrice ?? Infinity;
     case "yearly":  return p.oneYearSubscriptionIntroPricePerMonth ?? Infinity;
     case "twoyear": return p.twoYearSubscriptionIntroPricePerMonth ?? Infinity;
-    case "speed":   return p.speedScore;
-    case "servers": return p.serverCount;
   }
 }
 
@@ -85,8 +83,6 @@ const TABLE_COLS: { key: SortCol; label: string; numeric?: boolean }[] = [
   { key: "monthly", label: "1 mån/mån",  numeric: true },
   { key: "yearly",  label: "1 år/mån",   numeric: true },
   { key: "twoyear", label: "2 år/mån",   numeric: true },
-  { key: "speed",   label: "Hastighet",  numeric: true },
-  { key: "servers", label: "Servrar",    numeric: true },
 ];
 
 function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
@@ -107,7 +103,7 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
   });
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
+    <div className="rounded-2xl border border-gray-200 bg-white shadow-sm">
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-gray-100 bg-gray-50">
@@ -124,6 +120,7 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
             <th className="px-4 py-3 font-semibold text-gray-500 text-center whitespace-nowrap">Streaming</th>
             <th className="px-4 py-3 font-semibold text-gray-500 text-left   whitespace-nowrap">Jurisdiktion</th>
             <th className="px-4 py-3 font-semibold text-gray-500 text-center whitespace-nowrap">Risk</th>
+            <th className="px-4 py-3"></th>
           </tr>
         </thead>
         <tbody>
@@ -131,20 +128,10 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
             const href = p.priceUrl ?? p.affiliateUrl ?? p.mainUrl ?? undefined;
             return (
               <tr key={p.slug} className={`border-b border-gray-50 hover:bg-slate-50 transition-colors ${i % 2 !== 0 ? "bg-gray-50/40" : ""}`}>
-                <td className="px-4 py-3.5 font-semibold text-gray-900 whitespace-nowrap">
-                  {href
-                    ? <a href={href} target="_blank" rel="noopener noreferrer sponsored" className="hover:underline underline-offset-2">{p.name}</a>
-                    : p.name}
-                </td>
+                <td className="px-4 py-3.5 font-semibold text-gray-900 whitespace-nowrap">{p.name}</td>
                 <td className="px-4 py-3.5 text-right text-gray-700 whitespace-nowrap"><Price n={p.monthlyIntroPrice} /></td>
                 <td className="px-4 py-3.5 text-right text-gray-700 whitespace-nowrap"><Price n={p.oneYearSubscriptionIntroPricePerMonth} /></td>
                 <td className="px-4 py-3.5 text-right text-gray-700 whitespace-nowrap"><Price n={p.twoYearSubscriptionIntroPricePerMonth} /></td>
-                <td className="px-4 py-3.5 text-right text-gray-700 whitespace-nowrap">
-                  {p.speedScore > 0 ? `${p.speedScore}/100` : <span className="text-gray-300 text-xs italic">–</span>}
-                </td>
-                <td className="px-4 py-3.5 text-right text-gray-700 whitespace-nowrap">
-                  {p.serverCount > 0 ? p.serverCount.toLocaleString("sv-SE") : <span className="text-gray-300 text-xs italic">–</span>}
-                </td>
                 <td className="px-4 py-3.5 text-center">
                   {p.hasNoLogs
                     ? <span className="text-emerald-600">{p.isAudited ? "✓ Auditerad" : "✓"}</span>
@@ -153,6 +140,14 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
                 <td className="px-4 py-3.5 text-center whitespace-nowrap"><StreamingBadge s={p.streamingSupport} /></td>
                 <td className="px-4 py-3.5 text-gray-600 whitespace-nowrap">{p.jurisdiction}</td>
                 <td className="px-4 py-3.5 text-center whitespace-nowrap"><RiskBadge risk={p.jurisdictionRisk} /></td>
+                <td className="px-4 py-3.5 text-right whitespace-nowrap">
+                  {href
+                    ? <a href={href} target="_blank" rel="noopener noreferrer sponsored"
+                        className="inline-flex items-center text-xs font-medium text-white bg-gray-900 rounded-lg px-3 py-1.5 hover:bg-gray-700 transition-colors">
+                        Se erbjudande →
+                      </a>
+                    : null}
+                </td>
               </tr>
             );
           })}
