@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vad är en VPN? – VpnGranskningen",
+  title: "Vad är en VPN?",
   description:
-    "En enkel förklaring av vad en VPN är, hur den fungerar och när du har nytta av en.",
+    "En enkel förklaring av vad en VPN är, hur den fungerar och när du har nytta av en. Lär dig om no-logs, kryptering och varför jurisdiktion spelar roll.",
+  alternates: { canonical: "/vad-ar-vpn" },
+  openGraph: {
+    title:       "Vad är en VPN?",
+    description: "En enkel förklaring av vad en VPN är, hur den fungerar och när du har nytta av en.",
+    url:         "/vad-ar-vpn",
+  },
 };
 
 export default function VadArVpn() {

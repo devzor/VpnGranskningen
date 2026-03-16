@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Om sajten – VpnGranskningen",
+  title: "Om sajten",
   description:
-    "VpnGranskningen är en oberoende sajt som hjälper dig hitta rätt VPN-leverantör.",
+    "VpnGranskningen är en oberoende sajt som hjälper dig hitta rätt VPN-leverantör. Läs om hur rekommendationerna fungerar och hur sajten finansieras.",
+  alternates: { canonical: "/om-sajten" },
+  openGraph: {
+    title:       "Om sajten",
+    description: "VpnGranskningen är en oberoende sajt som hjälper dig hitta rätt VPN-leverantör.",
+    url:         "/om-sajten",
+  },
 };
 
 export default function OmSajten() {
