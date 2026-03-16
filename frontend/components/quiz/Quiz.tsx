@@ -156,8 +156,8 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
                 <td className="px-4 py-3.5 text-center whitespace-nowrap"><StreamingBadge s={p.streamingSupport} /></td>
                 <td className="px-4 py-3.5 text-gray-600 whitespace-nowrap">{p.jurisdiction}</td>
                 <td className="px-4 py-3.5 text-center whitespace-nowrap"><RiskBadge risk={p.jurisdictionRisk} /></td>
-                <td className="px-4 py-3.5 text-right whitespace-nowrap">
-                  <div className="flex items-center justify-end gap-2">
+                <td className="px-3 py-3.5">
+                  <div className="flex flex-col items-end gap-1.5">
                     {REVIEW_URLS[p.slug] && (
                       <Link href={REVIEW_URLS[p.slug]}
                         className="text-xs text-gray-400 hover:text-gray-700 underline underline-offset-2 transition-colors whitespace-nowrap">
@@ -166,8 +166,8 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
                     )}
                     {href && (
                       <a href={href} target="_blank" rel="noopener noreferrer sponsored"
-                        className="inline-flex items-center text-xs font-medium text-white bg-gray-900 rounded-lg px-3 py-1.5 hover:bg-gray-700 transition-colors">
-                        Se erbjudande →
+                        className="text-xs font-medium text-white bg-gray-900 rounded-lg px-2.5 py-1 hover:bg-gray-700 transition-colors whitespace-nowrap">
+                        Besök →
                       </a>
                     )}
                   </div>
