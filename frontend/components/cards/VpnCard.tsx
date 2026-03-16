@@ -86,13 +86,7 @@ export default function VpnCard(props: VpnCardProps) {
   const reviewUrl  = REVIEW_URLS[provider.slug] ?? null;
 
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer sponsored"
-      className={`block bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-6 transition-all duration-200
-        ${href ? "hover:shadow-lg hover:border-gray-300 hover:-translate-y-0.5 cursor-pointer" : "cursor-default"}`}
-    >
+    <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-6 transition-all duration-200 hover:shadow-lg hover:border-gray-300">
       {/* Layout: staplat på mobil, rad på desktop */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
 
@@ -183,8 +177,8 @@ export default function VpnCard(props: VpnCardProps) {
           </div>
         </div>
 
-        {/* Höger: priskolumner – visas bara på desktop */}
-        <div className="hidden sm:flex flex-col items-end gap-2 shrink-0 sm:border-l sm:border-gray-100 sm:pl-6">
+        {/* Höger: priskolumner + CTA – visas bara på desktop */}
+        <div className="hidden sm:flex flex-col items-end gap-3 shrink-0 sm:border-l sm:border-gray-100 sm:pl-6">
           <span className="text-xs text-gray-400">Alla priser inkl. moms</span>
           <div className="flex items-start gap-8">
             <PriceCell
@@ -207,9 +201,19 @@ export default function VpnCard(props: VpnCardProps) {
               bonusMonths={provider.twoYearBonusMonths}
             />
           </div>
+          {href && (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="w-full text-center text-sm font-medium text-white bg-gray-900 rounded-xl px-4 py-2 hover:bg-gray-700 transition-colors"
+            >
+              Se erbjudande →
+            </a>
+          )}
         </div>
 
       </div>
-    </a>
+    </div>
   );
 }
