@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "NordVPN",
   tagline: "136 kr/mån · NordLynx · Deloitte-auditerad 2024",
   intro:   "NordVPN är marknadsledaren av en anledning: brett servernät med 7 300 servrar i 118 länder, snabb NordLynx-protokollet och konsekvent streamingstöd. Med Deloitte-audit 2024 och Panamas jurisdiktion är integritetsprofilen stark – men priset vid förnyelse är en nackdel.",
-  mainUrl: "https://nordvpn.com/sv/",
+  mainUrl: "https://nordvpn.com/sv/pricing/",
   scores: { streaming: 68, privacy: 82, paranoid: 73 },
   scoreNotes: {
     streaming: "Fullt streamingstöd (40p) + hastighet 9/10 (18p) + alla plattformar (10p). Pris 52 kr/mån > 10 ger 0p på prisvärde.",

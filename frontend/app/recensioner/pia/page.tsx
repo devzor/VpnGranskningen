@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "Private Internet Access",
   tagline: "22 kr/mån (2 år) · WireGuard · USA · Öppen källkod",
   intro:   "Private Internet Access (PIA) är ett av de billigaste VPN:erna med öppen källkod – och en av de äldsta aktörerna på marknaden. Med 35 000 servrar i 91 länder och obegränsat antal enheter ger det mycket för pengarna. USA-jurisdiktionen är den tydligaste nackdelen för privacy-medvetna användare.",
-  mainUrl: "https://www.privateinternetaccess.com/sv/",
+  mainUrl: "https://www.privateinternetaccess.com/pages/buy-vpn/",
   scores: { streaming: 44, privacy: 67, paranoid: 63 },
   scoreNotes: {
     streaming: "Delvis streamingstöd (20p) + hastighet 7/10 (14p) + alla plattformar (10p). Pris 35 kr/mån > 10 ger 0p på prisvärde.",

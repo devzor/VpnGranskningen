@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "Windscribe",
   tagline: "35 kr/mån (1 år) · WireGuard · Kanada · Gratis 10 GB/mån",
   intro:   "Windscribe är ett av de mer generösa gratis-VPN:erna: 10 GB per månad på gratisplanen och tillgång till servrar i 10 länder utan betalning. På betald plan erbjuder Windscribe öppen källkod, obegränsat enheter och ett brett utbud av obfuskeringsprotokoll inklusive Stealth och WStunnel. Kanada-jurisdiktion är en nackdel.",
-  mainUrl: "https://windscribe.com/",
+  mainUrl: "https://windscribe.com/upgrade",
   scores: { streaming: 44, privacy: 62, paranoid: 73 },
   scoreNotes: {
     streaming: "Delvis streamingstöd (20p) + hastighet 7/10 (14p) + alla plattformar (10p). Pris 35 kr/mån > 10 ger 0p på prisvärde.",

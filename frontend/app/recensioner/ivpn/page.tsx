@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "IVPN",
   tagline: "53 kr/mån (1 år) · WireGuard · Gibraltar · 100/100 Privacy",
   intro:   "IVPN är det enda VPN som uppnår 100/100 i vår Privacy-modell. Gibraltar-jurisdiktion (låg risk), Cure53-audit 2024, öppen källkod, kontantbetalning, warrant canary och multihop – alla brickor på plats. Det är okänt för många men är ett av de mest integritetsstarka alternativen som finns.",
-  mainUrl: "https://www.ivpn.net/",
+  mainUrl: "https://www.ivpn.net/pricing/",
   scores: { streaming: 24, privacy: 100, paranoid: 88 },
   scoreNotes: {
     streaming: "Ingen streaming (0p) + hastighet 7/10 (14p) + alla plattformar (10p). Streaming är inte IVPNs fokus.",

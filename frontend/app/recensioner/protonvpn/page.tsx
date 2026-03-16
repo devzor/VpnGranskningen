@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "Proton VPN",
   tagline: "52 kr/mån (1 år) · WireGuard · Schweiz · Gratis nivå",
   intro:   "Proton VPN kommer från samma team som skapade ProtonMail och är baserat i Genève, Schweiz. Med öppen källkod, Tor over VPN, ett gratis abonnemang utan datagräns och ett av de mest imponerande poängen i vår Paranoid-modell (95/100) är det ett av de starkaste integritetsalternativen på marknaden.",
-  mainUrl: "https://protonvpn.com/sv/",
+  mainUrl: "https://protonvpn.com/pricing",
   scores: { streaming: 66, privacy: 87, paranoid: 95 },
   scoreNotes: {
     streaming: "Fullt streamingstöd (40p) + hastighet 8/10 (16p) + alla plattformar (10p). Pris 52 kr/mån > 10 ger 0p på prisvärde.",

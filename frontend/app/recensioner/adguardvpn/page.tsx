@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "AdGuard VPN",
   tagline: "25 kr/mån (2 år) · Eget protokoll · Cypern · Gratis nivå",
   intro:   "AdGuard VPN kommer från skaparna av AdGuard – en av de mest respekterade annonsblockerarna. Det egenutvecklade protokollet maskerar VPN-trafik som vanlig HTTPS, vilket gör det svårt att blockera. En Cure53-audit 2023 verifierar no-logs och Cypern ger medelhög jurisdiktionsrisk.",
-  mainUrl: "https://adguard-vpn.com/",
+  mainUrl: "https://adguard-vpn.com/license.html",
   scores: { streaming: 44, privacy: 58, paranoid: 59 },
   scoreNotes: {
     streaming: "Delvis streamingstöd (20p) + hastighet 7/10 (14p) + alla plattformar (10p). Pris 35 kr/mån > 10 ger 0p på prisvärde.",

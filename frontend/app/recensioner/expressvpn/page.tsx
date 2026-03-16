@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "ExpressVPN",
   tagline: "70 kr/mån (1 år) · Lightway · Brittiska Jungfruöarna · KPMG-audit 2025",
   intro:   "ExpressVPN har länge positionerat sig som premium-valet och priset speglar det. Det egenutvecklade Lightway-protokollet levererar konstant hög hastighet och streamingstödet är branschens mest pålitliga. En KPMG-audit 2025 verifierar no-logs-policyn och Brittiska Jungfruöarna håller jurisdiktionsrisken låg.",
-  mainUrl: "https://www.expressvpn.com/",
+  mainUrl: "https://www.expressvpn.com/order",
   scores: { streaming: 68, privacy: 82, paranoid: 49 },
   scoreNotes: {
     streaming: "Fullt streamingstöd (40p) + hastighet 9/10 (18p) + alla plattformar (10p). Pris 70 kr/mån > 10 ger 0p på prisvärde.",

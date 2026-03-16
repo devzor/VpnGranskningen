@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "Mullvad VPN",
   tagline: "59 kr/mån · WireGuard · NCC Group-auditerad 2025",
   intro:   "Mullvad är den VPN som sätter integritet framför allt annat. Öppen källkod, kontantbetalning, inga konton kopplade till e-post – och en av branschens mest transparenta no-logs-policyer, verifierad av NCC Group 2025. Priset är fast och enkelt: 59 kr/månad oavsett period.",
-  mainUrl: "https://mullvad.net/sv/",
+  mainUrl: "https://mullvad.net/sv/pricing",
   scores: { streaming: 46, privacy: 75, paranoid: 78 },
   scoreNotes: {
     streaming: "Streaming delvis (20p) + hastighet 8/10 (16p) + alla plattformar (10p). Pris 59 kr/mån > 10 ger 0p på prisvärde.",

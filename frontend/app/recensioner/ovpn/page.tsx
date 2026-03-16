@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "OVPN",
   tagline: "42 kr/mån (1 år) · WireGuard · Sverige · Bevisad no-logs via domstol",
   intro:   "OVPN är en annan svensk aktör som äger sin egna hårdvara och har bevisat sin no-logs-policy på det starkaste möjliga sättet: i domstol. En svensk tingsrätt begärde ut data 2017 – och OVPN kunde inte lämna något eftersom det inte existerade. Streamingstödet är fullt och priset rimligt.",
-  mainUrl: "https://www.ovpn.com/sv/",
+  mainUrl: "https://www.ovpn.com/sv/pricing",
   scores: { streaming: 66, privacy: 37, paranoid: 31 },
   scoreNotes: {
     streaming: "Fullt streamingstöd (40p) + hastighet 8/10 (16p) + alla plattformar (10p). Pris 42 kr/mån > 10 ger 0p på prisvärde.",

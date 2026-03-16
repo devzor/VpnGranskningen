@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "AzireVPN",
   tagline: "40 kr/mån (1 år) · WireGuard · Sverige · RAM-only-servrar",
   intro:   "AzireVPN är en liten svensk aktör som äger sin egna hårdvara och kör RAM-only-servrar – ingen data kan skrivas till disk. Det är ett medvetet val som stärker no-logs-profilen i praktiken. Servernätet är litet (40 servrar i 15 länder) och ingen oberoende audit har genomförts, vilket sänker poängen i vår modell.",
-  mainUrl: "https://www.azirevpn.com/",
+  mainUrl: "https://www.azirevpn.com/pricing",
   scores: { streaming: 24, privacy: 29, paranoid: 16 },
   scoreNotes: {
     streaming: "Ingen streaming (0p) + hastighet 7/10 (14p) + Win/Mac/iOS/Android (10p). Streaming är inte AzireVPNs fokus.",

@@ -13,7 +13,7 @@ const data: ReviewData = {
   name:    "Surfshark",
   tagline: "26 kr/mån (2 år) · WireGuard · Nederländerna · Obegränsat enheter",
   intro:   "Surfsharks starkaste kort är priset och antalet enheter: obegränsat antal enheter på ett konto gör det till det bästa familje-VPN:et på marknaden. Med 2-årsplanen på 26 kr/mån är det ett av de billigaste alternativen. Deloitte-audit 2023 bekräftar no-logs – men audiтen är inte färsk vilket kostar poäng i vår modell.",
-  mainUrl: "https://surfshark.com/sv/",
+  mainUrl: "https://surfshark.com/sv/vpn/pricing",
   scores: { streaming: 66, privacy: 64, paranoid: 54 },
   scoreNotes: {
     streaming: "Fullt streamingstöd (40p) + hastighet 8/10 (16p) + alla plattformar (10p). Pris 42 kr/mån > 10 ger 0p på prisvärde.",
