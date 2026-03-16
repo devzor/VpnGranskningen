@@ -9,7 +9,7 @@ export default function Header() {
         </Link>
         <nav className="hidden sm:flex gap-6 text-sm text-gray-400">
           <Link href="/vad-ar-vpn" className="hover:text-white transition-colors">Vad är en VPN?</Link>
-          <a href="#" className="hover:text-white transition-colors">Jämför alla</a>
+          <Link href="/jamfor" className="hover:text-white transition-colors">Jämför alla</Link>
           <Link href="/om-sajten" className="hover:text-white transition-colors">Om sajten</Link>
         </nav>
       </div>
