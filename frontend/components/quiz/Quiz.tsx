@@ -40,33 +40,28 @@ const PROFILE_LABELS: Record<UserProfile, string> = {
 };
 
 export default function Quiz() {
-  const [open,     setOpen]     = useState(false);
-  const [selected, setSelected] = useState<UserProfile | null>(null);
-  const [allVpns,  setAllVpns]  = useState<VpnSummaryDto[] | null>(null);
-  const [results,  setResults]  = useState<RecommendResultDto[] | null>(null);
-  const [loading,  setLoading]  = useState(true);
-  const [error,    setError]    = useState<string | null>(null);
+  const [selected,    setSelected]    = useState<UserProfile | null>(null);
+  const [allVpns,     setAllVpns]     = useState<VpnSummaryDto[] | null>(null);
+  const [results,     setResults]     = useState<RecommendResultDto[] | null>(null);
+  const [loadingList, setLoadingList] = useState(true);
+  const [loadingRec,  setLoadingRec]  = useState(false);
+  const [error,       setError]       = useState<string | null>(null);
 
-  // Ladda alla leverantörer vid mount
   useEffect(() => {
     getAllVpns()
       .then(setAllVpns)
-      .catch(() => setError("Kunde inte hämta VPN-leverantörer. Kontrollera att API:t är igång."))
-      .finally(() => setLoading(false));
+      .catch(() => setError("Kunde inte ansluta till API:t. Försök ladda om sidan."))
+      .finally(() => setLoadingList(false));
   }, []);
 
-  // Stäng modal med Escape
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [open]);
-
   async function handleSelect(profile: UserProfile) {
+    if (selected === profile) {
+      setSelected(null);
+      setResults(null);
+      return;
+    }
     setSelected(profile);
-    setOpen(false);
-    setLoading(true);
+    setLoadingRec(true);
     setError(null);
     setResults(null);
 
@@ -74,90 +69,66 @@ export default function Quiz() {
       const data = await getRecommendations(profile);
       setResults(data);
     } catch {
-      setError("Kunde inte hämta rekommendationer. Kontrollera att API:t är igång och försök igen.");
+      setError("Kunde inte hämta rekommendationer. Försök igen.");
     } finally {
-      setLoading(false);
+      setLoadingRec(false);
     }
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
 
-      {/* Trigger */}
-      <div className="flex items-center gap-4">
-        <button
-          onClick={() => setOpen(true)}
-          className="text-sm font-medium text-white bg-gray-900 rounded-lg px-5 py-2.5 hover:bg-gray-700 transition-colors duration-150"
-        >
-          Välj din profil
-        </button>
-        {selected && (
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-500">
-              Visar rekommendationer för <span className="text-gray-900 font-medium">{PROFILE_LABELS[selected]}</span>
-            </span>
-            <button
-              onClick={() => { setSelected(null); setResults(null); }}
-              className="text-xs text-gray-400 hover:text-gray-700 underline underline-offset-2 transition-colors duration-150"
-            >
-              Rensa
-            </button>
-          </div>
-        )}
+      {/* Profilkort */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {PROFILES.map((p) => (
+          <ProfileCard
+            key={p.profile}
+            {...p}
+            selected={selected === p.profile}
+            onClick={() => handleSelect(p.profile)}
+          />
+        ))}
       </div>
 
-      {/* Modal */}
-      {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
-        >
-          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-5xl overflow-hidden">
-            {/* Header */}
-            <div className="relative px-10 pt-10 pb-7 border-b border-gray-100">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Steg 1 av 1</p>
-              <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Vad är du ute efter?</h2>
-              <p className="text-sm text-gray-500 mt-1">Välj din profil – vi hittar rätt VPN åt dig.</p>
-              <button
-                onClick={() => setOpen(false)}
-                className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 transition-colors text-sm font-bold"
-                aria-label="Stäng"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Cards */}
-            <div className="p-10">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                {PROFILES.map((p) => (
-                  <ProfileCard
-                    key={p.profile}
-                    {...p}
-                    selected={selected === p.profile}
-                    onClick={() => handleSelect(p.profile)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Kort */}
-      {loading && (
-        <p className="text-sm text-gray-400 py-8">Hämtar…</p>
-      )}
+      {/* Resultat */}
       {error && (
-        <p className="text-sm text-red-400 py-8">{error}</p>
-      )}
-      {!loading && !error && results && (
-        <div className="space-y-3">
-          <p className="text-sm text-gray-400">Rankade efter hur väl de matchar din profil</p>
-          <VpnCardGrid mode="recommend" results={results} />
+        <div className="rounded-2xl border border-red-100 bg-red-50 px-6 py-5 text-sm text-red-600">
+          {error}
         </div>
       )}
-      {!loading && !error && !results && allVpns && (
+
+      {loadingList && !error && (
+        <div className="flex flex-col gap-3">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="h-32 rounded-2xl bg-gray-100 animate-pulse" />
+          ))}
+        </div>
+      )}
+
+      {loadingRec && (
+        <div className="flex flex-col gap-3">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="h-32 rounded-2xl bg-gray-100 animate-pulse" />
+          ))}
+        </div>
+      )}
+
+      {!loadingList && !loadingRec && !error && results && (
+        <div className="space-y-3">
+          <p className="text-sm text-gray-400">
+            Rekommendationer för <span className="font-medium text-gray-700">{PROFILE_LABELS[selected!]}</span> – rankade efter matchning
+          </p>
+          <VpnCardGrid mode="recommend" results={results} />
+          <button
+            onClick={() => { setSelected(null); setResults(null); }}
+            className="mt-2 text-xs text-gray-400 hover:text-gray-700 underline underline-offset-2 transition-colors"
+          >
+            Rensa val – visa alla leverantörer
+          </button>
+        </div>
+      )}
+
+      {!loadingList && !loadingRec && !error && !results && allVpns && (
         <VpnCardGrid mode="list" providers={allVpns} />
       )}
 

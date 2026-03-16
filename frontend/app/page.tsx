@@ -27,6 +27,16 @@ export default function Home() {
             </p>
           </div>
 
+          {/* CTA */}
+          <div>
+            <a
+              href="#quiz"
+              className="inline-flex items-center gap-2 bg-white text-gray-900 font-semibold text-sm rounded-xl px-6 py-3 hover:bg-gray-100 transition-colors duration-150"
+            >
+              Hitta mitt VPN →
+            </a>
+          </div>
+
           {/* Trust chips */}
           <div className="flex flex-wrap gap-3">
             {TRUST_CHIPS.map(({ icon, text }) => (
@@ -46,7 +56,7 @@ export default function Home() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-14 space-y-10 sm:space-y-14">
 
         {/* Quiz */}
-        <section>
+        <section id="quiz">
           <div className="mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Vad är du ute efter?</h2>
             <p className="text-sm text-gray-500 mt-1">Välj din profil för personliga rekommendationer, eller bläddra i alla leverantörer nedan.</p>
