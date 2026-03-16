@@ -1,4 +1,9 @@
+import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, VpnSummaryDto } from "@/types/vpn";
+
+const REVIEW_URLS: Record<string, string> = {
+  mullvad: "/recensioner/mullvad",
+};
 
 function scoreStyle(score: number) {
   if (score >= 80) return "bg-emerald-50 text-emerald-700 border-emerald-200";
@@ -75,9 +80,10 @@ export default function VpnCard(props: VpnCardProps) {
   const motivation = props.mode === "recommend" ? props.result.motivation : provider.editorSummary;
   const topPick    = props.topPick ?? false;
 
-  const risk      = riskLabel(provider.jurisdictionRisk);
-  const streaming = streamingLabel(provider.streamingSupport);
-  const href      = provider.priceUrl ?? provider.affiliateUrl ?? provider.mainUrl ?? undefined;
+  const risk       = riskLabel(provider.jurisdictionRisk);
+  const streaming  = streamingLabel(provider.streamingSupport);
+  const href       = provider.priceUrl ?? provider.affiliateUrl ?? provider.mainUrl ?? undefined;
+  const reviewUrl  = REVIEW_URLS[provider.slug] ?? null;
 
   return (
     <a
@@ -131,6 +137,15 @@ export default function VpnCard(props: VpnCardProps) {
             <span className="text-gray-500">
               {provider.jurisdiction} · <span className={risk.cls}>{risk.text}</span>
             </span>
+            {reviewUrl && (
+              <Link
+                href={reviewUrl}
+                onClick={(e) => e.stopPropagation()}
+                className="text-gray-400 hover:text-gray-700 underline underline-offset-2 transition-colors"
+              >
+                Läs recension
+              </Link>
+            )}
           </div>
 
           {/* Mobilpriser – visas bara på mobil */}

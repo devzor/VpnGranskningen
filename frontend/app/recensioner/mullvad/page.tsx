@@ -14,44 +14,36 @@ export const metadata: Metadata = {
 };
 
 // ---------------------------------------------------------------------------
-// Betygskomponenter
+// Betyg – beräknade från VpnGranskningen scoringmodell (se nedan)
 // ---------------------------------------------------------------------------
-function Stars({ score }: { score: number }) {
-  const full  = Math.floor(score);
-  const half  = score % 1 >= 0.5;
-  const empty = 5 - full - (half ? 1 : 0);
-  return (
-    <span className="flex gap-0.5 items-center">
-      {[...Array(full)].map((_, i)  => <span key={`f${i}`} className="text-amber-400 text-lg">★</span>)}
-      {half                          && <span className="text-amber-400 text-lg">½</span>}
-      {[...Array(empty)].map((_, i) => <span key={`e${i}`} className="text-gray-200 text-lg">★</span>)}
-    </span>
-  );
-}
+const SCORES = {
+  streaming: 46,  // Streaming & resor
+  privacy:   75,  // Max Privacy
+  paranoid:  78,  // Super User
+};
 
-function ScoreRow({ label, score, note }: { label: string; score: number; note?: string }) {
-  const pct = (score / 5) * 100;
+function ScoreBar({ label, score, breakdown }: { label: string; score: number; breakdown: string }) {
   const color =
-    score >= 4.5 ? "bg-emerald-500" :
-    score >= 3.5 ? "bg-amber-400"   :
+    score >= 70 ? "bg-emerald-500" :
+    score >= 50 ? "bg-amber-400"   :
     "bg-red-400";
   return (
-    <div className="flex flex-col gap-1">
+    <div className="space-y-1.5">
       <div className="flex items-center justify-between text-sm">
-        <span className="text-gray-700">{label}</span>
-        <span className="font-semibold text-gray-900">{score.toFixed(1)}<span className="text-gray-400 font-normal">/5</span></span>
+        <span className="text-gray-700 font-medium">{label}</span>
+        <span className="font-bold text-gray-900 tabular-nums">{score}<span className="text-gray-400 font-normal">/100</span></span>
       </div>
-      <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-        <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
+      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+        <div className={`h-full rounded-full transition-all ${color}`} style={{ width: `${score}%` }} />
       </div>
-      {note && <p className="text-xs text-gray-400">{note}</p>}
+      <p className="text-xs text-gray-400">{breakdown}</p>
     </div>
   );
 }
 
 function ProCon({ items, type }: { items: string[]; type: "pro" | "con" }) {
-  const icon  = type === "pro" ? "✓" : "✗";
-  const cls   = type === "pro" ? "text-emerald-600" : "text-red-400";
+  const icon = type === "pro" ? "✓" : "✗";
+  const cls  = type === "pro" ? "text-emerald-600" : "text-red-400";
   return (
     <ul className="space-y-2">
       {items.map((item) => (
@@ -68,8 +60,6 @@ function ProCon({ items, type }: { items: string[]; type: "pro" | "con" }) {
 // Sida
 // ---------------------------------------------------------------------------
 export default function MullvadRecension() {
-  const OVERALL = 4.5;
-
   return (
     <div className="min-h-screen bg-white">
       <main className="max-w-2xl mx-auto px-6 py-14 space-y-12">
@@ -89,17 +79,78 @@ export default function MullvadRecension() {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight">
             Mullvad VPN
           </h1>
-          <div className="flex items-center gap-3">
-            <Stars score={OVERALL} />
-            <span className="text-2xl font-bold text-gray-900">{OVERALL}</span>
-            <span className="text-gray-400 text-sm">/ 5</span>
-          </div>
           <p className="text-base text-gray-600 leading-relaxed">
             Mullvad är den VPN som sätter integritet framför allt annat. Öppen källkod, kontantbetalning,
             inga konton kopplade till e-post – och en av branschens mest transparenta no-logs-policyer,
-            verifierad av NCC Group 2025. Priset är fast och enkelt: 59 kr/månad oavsett period.
+            verifierad av NCC Group 2025.
           </p>
         </header>
+
+        {/* Poäng */}
+        <section className="space-y-5">
+          <div>
+            <h2 className="text-lg font-semibold text-gray-900">Betyg per användarprofil</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              Poängen beräknas automatiskt av{" "}
+              <Link href="/#quiz" className="underline underline-offset-2 hover:text-gray-700">vår scoringmodell</Link>
+              {" "}– se viktning nedan.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 space-y-5">
+            <ScoreBar
+              label="Netflix & Resor"
+              score={SCORES.streaming}
+              breakdown="Streaming delvis (20p) + hastighet 8/10 (16p) + alla plattformar (10p). Pris 59 kr/mån > 10 gränsen ger 0p på prisvärde."
+            />
+            <ScoreBar
+              label="Max Privacy"
+              score={SCORES.privacy}
+              breakdown="No-logs + audit + färsk audit (35p) + accepterar crypto & kontanter (20p) + öppen källkod, canary, transparens (20p). Sverige = hög jurisdiktionsrisk = 0p av max 25p."
+            />
+            <ScoreBar
+              label="Super User"
+              score={SCORES.paranoid}
+              breakdown="Privacy-bas (30p) + multihop (12p) + obfuskering (10p) + öppen källkod (20p) + kill switch & split tunneling (6p). Saknar Tor-stöd (–12p mot max)."
+            />
+          </div>
+
+          {/* Viktningsförklaring */}
+          <details className="rounded-xl border border-gray-200 text-sm">
+            <summary className="px-4 py-3 cursor-pointer font-medium text-gray-700 hover:text-gray-900 select-none">
+              Hur räknar vi? Visa viktning →
+            </summary>
+            <div className="px-4 pb-4 pt-2 space-y-4 text-gray-600">
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">Netflix & Resor (max 100p)</p>
+                <ul className="space-y-0.5 text-xs">
+                  <li>Streaming – Fullt: 40p / Delvis: 20p / Inget: 0p</li>
+                  <li>Ettårspris – ≤3 kr: 30p / ≤5 kr: 22p / ≤7 kr: 14p / ≤10 kr: 6p / Mer: 0p</li>
+                  <li>Hastighetspoäng – SpeedScore × 2 (max 20p)</li>
+                  <li>Plattformar – Win/Mac/iOS/Android: 10p om alla 4, annars proportionellt</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">Max Privacy (max 100p)</p>
+                <ul className="space-y-0.5 text-xs">
+                  <li>No-logs: 15p | Auditerad: 15p | Färsk audit (≤2 år): 5p</li>
+                  <li>Jurisdiktion – Låg risk: 25p / Medel: 12p / Hög: 0p</li>
+                  <li>Accepterar crypto: 12p | Kontanter: 8p</li>
+                  <li>Öppen källkod: 6p | Transparensrapport: 4p | Warrant canary: 4p</li>
+                  <li>DNS-läckskydd: 4p | Kill switch: 2p</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800 mb-1">Super User (max 100p)</p>
+                <ul className="space-y-0.5 text-xs">
+                  <li>Privacy-poäng × 0,4 (max 40p)</li>
+                  <li>Multihop/Double VPN: 12p | Tor-stöd: 12p | Obfuskering: 10p</li>
+                  <li>Kill switch: 4p | Split tunneling: 2p</li>
+                  <li>Öppen källkod: 20p</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </section>
 
         {/* Snabbfakta */}
         <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 grid grid-cols-2 gap-4 text-sm">
@@ -122,19 +173,6 @@ export default function MullvadRecension() {
           ))}
         </div>
 
-        {/* Betyg per kategori */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold text-gray-900">Betyg per kategori</h2>
-          <div className="space-y-4">
-            <ScoreRow label="Integritet & säkerhet" score={5.0} note="No-logs verifierad, öppen källkod, accepterar kontanter och Monero" />
-            <ScoreRow label="Transparens"           score={5.0} note="Warrant canary, transparensrapport, kontonummer utan e-post" />
-            <ScoreRow label="Pris"                  score={4.5} note="Fast pris utan lockerbjudanden – enklare och mer ärligt än konkurrenterna" />
-            <ScoreRow label="Prestanda"             score={4.0} note="WireGuard ger hög hastighet; serverparken är mindre än hos NordVPN/ExpressVPN" />
-            <ScoreRow label="Streaming"             score={2.5} note="Fungerar ibland för Netflix men är inte prioriterat av Mullvad" />
-            <ScoreRow label="Användarvänlighet"     score={3.5} note="Kontonummersystemet är unikt men kan förvirra nya användare" />
-          </div>
-        </section>
-
         {/* För och emot */}
         <section className="grid sm:grid-cols-2 gap-6">
           <div className="space-y-3">
@@ -153,12 +191,12 @@ export default function MullvadRecension() {
           <div className="space-y-3">
             <h2 className="text-base font-semibold text-gray-900">Nackdelar</h2>
             <ProCon type="con" items={[
-              "Streaming är inte prioriterat (Netflix fungerar sporadiskt)",
+              "Streaming är inte prioriterat",
               "Bara 5 simultana enheter",
               "Ingen dedikerad IP-adress",
-              "Sverige – 14 Eyes-land (se avsnittet nedan)",
+              "Sverige – 14 Eyes-land (se nedan)",
               "Port forwarding borttaget 2023",
-              "Inga långa prenumerationer med rabatt",
+              "Ingen rabatt på längre prenumerationer",
             ]} />
           </div>
         </section>
@@ -166,27 +204,22 @@ export default function MullvadRecension() {
         {/* Integritet i detalj */}
         <section className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-900">Integritet – den djupare analysen</h2>
-
           <div className="space-y-4 text-sm text-gray-600 leading-relaxed">
             <p>
               Mullvad är baserat i Göteborg av bolaget <strong className="text-gray-900">Amagicom AB</strong>.
               Sverige är ett 14 Eyes-land och EU-member, vilket i teorin innebär att svenska myndigheter
-              kan begära ut data. I praktiken har detta aldrig skett med Mullvad – och bolaget har inget
-              att lämna ut, eftersom ingen data sparas.
+              kan begära ut data. Vår modell ger därför 0 av 25 möjliga jurisdiktionspoäng – det är
+              den enskilt största orsaken till att Privacy-poängen stannar på 75 istället för 100.
             </p>
             <p>
-              År 2023 genomförde svensk polis en razzia mot Mullvads kontor. Ingen data confiskerades
-              eftersom det bokstavligen inte finns något att ta. Det är det starkaste beviset för att
-              no-logs-policyen faktiskt håller i verkligheten – inte bara på papper.
+              I praktiken har detta aldrig skett. År 2023 genomförde svensk polis en razzia mot Mullvads kontor.
+              Ingen data konfiskerades – eftersom det bokstavligen inte finns något att ta. Det är det
+              starkaste möjliga beviset för att no-logs-policyn faktiskt håller.
             </p>
             <p>
               <strong className="text-gray-900">NCC Group</strong> granskade Mullvads WireGuard-implementation
               2025 och bekräftade att no-logs-löftet upprätthålls tekniskt. Tidigare revisioner av
               Cure53 (2020, 2021) granskade klientapparna och infrastrukturen.
-            </p>
-            <p>
-              Kontosystemet är unikt: du registrerar dig med ett kontonummer, inte ett mejl.
-              Mullvad vet inte vem du är – ens om de ville berätta det.
             </p>
           </div>
         </section>
@@ -197,12 +230,12 @@ export default function MullvadRecension() {
           <p className="text-sm text-gray-600 leading-relaxed">
             Mullvad tillämpar ett fast pris på <strong className="text-gray-900">59 kr/månad</strong> –
             inga introduktionserbjudanden, inga kampanjpriser som tripplas vid förnyelse.
-            Det är ovanligt i en bransch full av lockpriser.
+            Väljer du 2-årsplan betalar du 49 kr/mån.
           </p>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { label: "Månadsvis",  price: "59 kr/mån" },
-              { label: "2 år",       price: "49 kr/mån" },
+              { label: "Månadsvis / 1 år", price: "59 kr/mån" },
+              { label: "2 år",             price: "49 kr/mån" },
             ].map(({ label, price }) => (
               <div key={label} className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-center">
                 <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
@@ -217,14 +250,14 @@ export default function MullvadRecension() {
         <section className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-900">Slutsats – vem passar Mullvad?</h2>
           <p className="text-sm text-gray-600 leading-relaxed">
-            Mullvad är det självklara valet för dig som sätter integritet och transparens i första
-            rummet. Öppen källkod, verifierad no-logs-policy och möjligheten att betala anonymt
-            gör det unikt i branschen. Polisrazzian 2023 visade i praktiken att systemet fungerar.
+            Mullvad är det självklara valet för Max Privacy- och Super User-profiler. Med 75 respektive
+            78 poäng i vår modell placerar det sig i toppen för integritetsfokuserade användare.
+            Polisrazzian 2023 är det bästa tänkbara beviset för att systemet fungerar i verkligheten.
           </p>
           <p className="text-sm text-gray-600 leading-relaxed">
-            Är du primärt ute efter att streama Netflix eller vill ha riktigt många enheter finns
-            bättre alternativ. Men för den som vill ha en VPN som faktiskt lever upp till sina
-            integritetsløften finns det inget som slår Mullvad.
+            Är du primärt ute efter att streama Netflix (46p) eller vill ha riktigt lågt pris finns
+            bättre alternativ. Men för den som sätter integritet och transparens i första rummet
+            är Mullvad svårslagen.
           </p>
 
           <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, UserProfile, VpnSummaryDto } from "@/types/vpn";
+
+const REVIEW_URLS: Record<string, string> = {
+  mullvad: "/recensioner/mullvad",
+};
 import { getAllVpns, getRecommendations } from "@/lib/api";
 import ProfileCard from "./ProfileCard";
 import VpnCardGrid from "@/components/cards/VpnCardGrid";
@@ -141,12 +146,20 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
                 <td className="px-4 py-3.5 text-gray-600 whitespace-nowrap">{p.jurisdiction}</td>
                 <td className="px-4 py-3.5 text-center whitespace-nowrap"><RiskBadge risk={p.jurisdictionRisk} /></td>
                 <td className="px-4 py-3.5 text-right whitespace-nowrap">
-                  {href
-                    ? <a href={href} target="_blank" rel="noopener noreferrer sponsored"
+                  <div className="flex items-center justify-end gap-2">
+                    {REVIEW_URLS[p.slug] && (
+                      <Link href={REVIEW_URLS[p.slug]}
+                        className="text-xs text-gray-400 hover:text-gray-700 underline underline-offset-2 transition-colors whitespace-nowrap">
+                        Recension
+                      </Link>
+                    )}
+                    {href && (
+                      <a href={href} target="_blank" rel="noopener noreferrer sponsored"
                         className="inline-flex items-center text-xs font-medium text-white bg-gray-900 rounded-lg px-3 py-1.5 hover:bg-gray-700 transition-colors">
                         Se erbjudande →
                       </a>
-                    : null}
+                    )}
+                  </div>
                 </td>
               </tr>
             );
