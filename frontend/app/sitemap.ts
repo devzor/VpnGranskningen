@@ -22,11 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority:        0.5,
     },
-    {
-      url:             `${SITE_URL}/recensioner/mullvad`,
+    ...["nordvpn","mullvad","protonvpn","surfshark","expressvpn","ivpn","cyberghost","pia","windscribe","azirevpn","ovpn","adguardvpn"].map((slug) => ({
+      url:             `${SITE_URL}/recensioner/${slug}`,
       lastModified:    new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority:        0.8,
-    },
+    })),
   ];
 }

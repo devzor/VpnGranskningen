@@ -5,7 +5,18 @@ import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, UserProfile, VpnSummaryDto } from "@/types/vpn";
 
 const REVIEW_URLS: Record<string, string> = {
-  mullvad: "/recensioner/mullvad",
+  nordvpn:    "/recensioner/nordvpn",
+  mullvad:    "/recensioner/mullvad",
+  protonvpn:  "/recensioner/protonvpn",
+  surfshark:  "/recensioner/surfshark",
+  expressvpn: "/recensioner/expressvpn",
+  ivpn:       "/recensioner/ivpn",
+  cyberghost: "/recensioner/cyberghost",
+  pia:        "/recensioner/pia",
+  windscribe: "/recensioner/windscribe",
+  azirevpn:   "/recensioner/azirevpn",
+  ovpn:       "/recensioner/ovpn",
+  adguardvpn: "/recensioner/adguardvpn",
 };
 import { getAllVpns, getRecommendations } from "@/lib/api";
 import ProfileCard from "./ProfileCard";
