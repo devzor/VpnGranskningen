@@ -6,9 +6,8 @@ import Header from "@/components/Header";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "VpnGranskningen – Oberoende VPN-jämförelse",
-  description:
-    "Hitta rätt VPN utan reklamsnack. Oberoende granskning av no-logs-policy, jurisdiktion, pris och streamingstöd.",
+  title: "VpnGranskningen – Bästa VPN i Sverige 2026",
+  description: "Oberoende granskning av bästa VPN i Sverige 2026",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
