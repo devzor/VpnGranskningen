@@ -1,4 +1,22 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const ALL_REVIEWS = [
+  { slug: "nordvpn",    name: "NordVPN"                  },
+  { slug: "mullvad",    name: "Mullvad"                   },
+  { slug: "protonvpn",  name: "Proton VPN"                },
+  { slug: "surfshark",  name: "Surfshark"                 },
+  { slug: "expressvpn", name: "ExpressVPN"                },
+  { slug: "ivpn",       name: "IVPN"                      },
+  { slug: "cyberghost", name: "CyberGhost"                },
+  { slug: "pia",        name: "Private Internet Access"   },
+  { slug: "windscribe", name: "Windscribe"                },
+  { slug: "azirevpn",   name: "AzireVPN"                  },
+  { slug: "ovpn",       name: "OVPN"                      },
+  { slug: "adguardvpn", name: "AdGuard VPN"               },
+];
 
 export interface ReviewData {
   slug:         string;
@@ -60,15 +78,46 @@ function ProCon({ items, type }: { items: string[]; type: "pro" | "con" }) {
   );
 }
 
+function ReviewSidebar({ currentSlug }: { currentSlug: string }) {
+  const pathname = usePathname();
+  return (
+    <aside className="hidden lg:block w-56 shrink-0">
+      <div className="sticky top-8">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">Alla recensioner</p>
+        <nav className="flex flex-col gap-0.5">
+          {ALL_REVIEWS.map(({ slug, name }) => {
+            const active = pathname === `/recensioner/${slug}`;
+            return (
+              <Link
+                key={slug}
+                href={`/recensioner/${slug}`}
+                className={`text-sm px-3 py-1.5 rounded-lg transition-colors ${
+                  active
+                    ? "bg-gray-900 text-white font-medium"
+                    : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+                }`}
+              >
+                {name}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 export default function ReviewPage({ data }: { data: ReviewData }) {
-  const { name, tagline, intro, mainUrl, scores, scoreNotes, facts, pros, cons, sections, pricing, conclusion } = data;
+  const { slug, name, tagline, intro, mainUrl, scores, scoreNotes, facts, pros, cons, sections, pricing, conclusion } = data;
 
   return (
     <div className="min-h-screen bg-white">
-      <main className="max-w-2xl mx-auto px-6 py-14 space-y-12">
+      <div className="max-w-5xl mx-auto px-6 py-14 flex gap-12">
+        <main className="flex-1 min-w-0 space-y-12">
+
 
         {/* Brödsmula */}
         <nav className="text-xs text-gray-400 flex gap-1.5 items-center">
@@ -208,7 +257,9 @@ export default function ReviewPage({ data }: { data: ReviewData }) {
           </Link>
         </div>
 
-      </main>
+        </main>
+        <ReviewSidebar currentSlug={slug} />
+      </div>
     </div>
   );
 }
