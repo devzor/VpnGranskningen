@@ -9,7 +9,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./backend/VpnGranskningen.Infrastructure/Persistence/Schema:/docker-entrypoint-initdb.d
+      - ./backend/VpnGranskningen.Infrastructure/Persistence/Schema/000_init.sql:/docker-entrypoint-initdb.d/000_init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d vpngranskningen"]
       interval: 5s

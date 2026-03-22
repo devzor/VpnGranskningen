@@ -8,7 +8,7 @@ const TRUST_CHIPS = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ background: "white" }}>
 
       {/* Hero */}
       <section className="bg-gray-950 text-white">

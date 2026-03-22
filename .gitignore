@@ -8,6 +8,7 @@ backend/**/bin/
 backend/**/obj/
 backend/**/*.user
 backend/.vs/
+backend/**/appsettings.Development.json
 
 # Python
 ai/__pycache__/
