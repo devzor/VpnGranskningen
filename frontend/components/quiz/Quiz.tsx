@@ -226,8 +226,25 @@ export default function Quiz() {
   return (
     <div className="space-y-8">
 
-      {/* Profilkort */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {/* Profilväljare – dropdown på mobil, kort på desktop */}
+      <div className="block sm:hidden">
+        <select
+          value={selected ?? ""}
+          onChange={(e) => {
+            const val = e.target.value as UserProfile | "";
+            if (val === "") { setSelected(null); setResults(null); }
+            else handleSelect(val as UserProfile);
+          }}
+          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+        >
+          <option value="">Välj din profil…</option>
+          {PROFILES.map((p) => (
+            <option key={p.profile} value={p.profile}>{p.icon} {p.title}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="hidden sm:grid sm:grid-cols-3 gap-4">
         {PROFILES.map((p) => (
           <ProfileCard
             key={p.profile}
