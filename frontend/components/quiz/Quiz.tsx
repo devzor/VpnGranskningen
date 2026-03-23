@@ -231,9 +231,9 @@ export default function Quiz() {
         <select
           value={selected ?? ""}
           onChange={(e) => {
-            const val = e.target.value as UserProfile | "";
+            const val = e.target.value;
             if (val === "") { setSelected(null); setResults(null); }
-            else handleSelect(val as UserProfile);
+            else handleSelect(Number(val) as UserProfile);
           }}
           className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
         >
