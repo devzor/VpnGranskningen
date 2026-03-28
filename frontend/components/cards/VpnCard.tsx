@@ -181,9 +181,14 @@ export default function VpnCard(props: VpnCardProps) {
               ))}
             </div>
             {href && (
-              <span className="mt-3 w-full flex items-center justify-center text-sm font-medium text-white bg-gray-900 rounded-xl px-4 py-2.5">
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="mt-3 w-full flex items-center justify-center text-sm font-medium text-white bg-gray-900 rounded-xl px-4 py-2.5 hover:bg-gray-700 transition-colors"
+              >
                 Se erbjudande →
-              </span>
+              </a>
             )}
           </div>
         </div>
