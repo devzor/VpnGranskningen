@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "AzireVPN recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "AzireVPN är en hederlig liten aktör med rätt tankar kring RAM-only och hårdvaruägande. De låga poängen (Privacy 29/100, Paranoid 16/100) beror nästan uteslutande på avsaknad av audit och Sverige-jurisdiktion. För den som litar på tekniska argument utan audit-bekräftelse är det ett intressant alternativ – annars välj Mullvad eller IVPN.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("azirevpn");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

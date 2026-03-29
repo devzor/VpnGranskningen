@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "Surfshark recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "Surfshark är det bästa valet för familjer och den som vill ha lågt pris (66/100 streaming). Privacy-poängen (64/100) är godkänd men inte imponerande – Nederlanderna-jurisdiktionen och en föråldrad audiт håller ner betyget. Vill du ha maximal integritet finns bättre alternativ.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("surfshark");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

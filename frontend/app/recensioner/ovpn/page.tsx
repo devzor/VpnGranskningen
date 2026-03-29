@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "OVPN recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "OVPN är ett hedervärt streaming-VPN (66/100) med ett unikt domstolsbevis för no-logs. De låga Privacy-poängen (37/100) reflekterar modellens betoning på audit och jurisdiktion – inte att OVPN är oseriöst. För den som litar på det praktiska beviset mer än certifieringspapper är OVPN ett starkt alternativ.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("ovpn");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

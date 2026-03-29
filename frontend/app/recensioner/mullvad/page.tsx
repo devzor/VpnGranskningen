@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "Mullvad VPN recension 2026",
@@ -67,4 +68,7 @@ const data: ReviewData = {
   conclusion: "Mullvad är det självklara valet för Max Privacy- och Super User-profiler. Med 75 respektive 78 poäng i vår modell placerar det sig i toppen för integritetsfokuserade användare. Polisrazzian 2023 är det bästa tänkbara beviset för att systemet fungerar i verkligheten. Är du primärt ute efter streaming (46p) eller vill ha riktigt lågt pris finns bättre alternativ.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("mullvad");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

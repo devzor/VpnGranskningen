@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "ExpressVPN recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "ExpressVPN är rätt val om du prioriterar hastighet och streaming (68/100) och inte låter priset stoppa dig. Privacy-profilen är stark (82/100) men Super User-poängen är låg (49/100) – bristen på multihop, Tor och öppen källkod kostar. Det finns billigare alternativ med likvärdig prestanda.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("expressvpn");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

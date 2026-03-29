@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "Private Internet Access (PIA) recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "PIA är det bästa valet för den som vill ha lågt pris, öppen källkod och obegränsat enheter (63/100 Super User, 67/100 Privacy). USA-jurisdiktionen är den enda riktigt stora nackdelen och gör det till ett sämre val för rena privacy-profiler. Streaming är begränsat (44/100).",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("pia");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

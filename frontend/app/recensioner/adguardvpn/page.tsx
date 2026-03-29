@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "AdGuard VPN recension 2026",
@@ -66,4 +67,7 @@ const data: ReviewData = {
   conclusion: "AdGuard VPN är ett intressant val för den som vill ha stark annonsblockning och ett obfuskeringsprotokoll i ett paket (59/100 Paranoid). Privacy-poängen (58/100) är godkänd men inte imponerande. Streaming är begränsat (44/100). Bäst för tekniskt medvetna användare i restriktiva nätverksmiljöer.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("adguardvpn");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

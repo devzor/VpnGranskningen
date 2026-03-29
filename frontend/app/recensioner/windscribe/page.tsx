@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "Windscribe recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "Windscribe är det bästa valet om du vill testa ett VPN gratis eller behöver avancerad obfuskering (73/100 Super User). Kanada-jurisdiktionen och den föråldrade audiтen sänker Privacy-poängen (62/100). För streaming finns bättre alternativ (44/100).",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("windscribe");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

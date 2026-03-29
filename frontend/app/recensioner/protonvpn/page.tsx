@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "Proton VPN recension 2026",
@@ -63,4 +64,7 @@ const data: ReviewData = {
   conclusion: "Proton VPN är det starkaste valet för Super User-profilen (95/100) och ligger högt även på Privacy (87/100). Schweizisk jurisdiktion, öppen källkod och Tor-stöd i kombination gör det till ett av marknadens mest integritetsstarka VPN. Audiтen från 2022 är den enda tydliga svagheten – förhoppningsvis uppdateras den snart.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("protonvpn");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "IVPN recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "IVPN är det självklara valet för den som sätter integritet absolut först och inte behöver streaming (24/100). Med 100/100 i Privacy och 88/100 för Super User är det svårslaget i sin nisch. Det lilla servernätet och avsaknaden av streamingstöd är reella begränsningar – men de är medvetna val från ett bolag som inte kompromissar.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("ivpn");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

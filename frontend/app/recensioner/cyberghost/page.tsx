@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "CyberGhost recension 2026",
@@ -65,4 +66,7 @@ const data: ReviewData = {
   conclusion: "CyberGhost är ett bra streaming-VPN (66/100) med ett imponerande servernät och dedikerade streamingservrar. Privacy-poängen (69/100) är godkänd men Super User-poängen (34/100) är låg – det är inte rätt val för den som prioriterar avancerad integritet. Den 45-dagars garantin gör det riskfritt att testa.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("cyberghost");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}

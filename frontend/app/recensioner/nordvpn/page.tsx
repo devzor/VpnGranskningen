@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ReviewPage, { ReviewData } from "@/components/reviews/ReviewPage";
+import { fetchReviewPricing } from "@/lib/reviewPricing";
 
 export const metadata: Metadata = {
   title: "NordVPN recension 2026",
@@ -64,4 +65,7 @@ const data: ReviewData = {
   conclusion: "NordVPN är det självklara valet för streaming och resor (68/100) och presterar starkt även på privacy (82/100). Den stora nackdelen är prissättningen: introduktionspriset är lockande men förnyelsepriset är 2–3× högre. Räkna med det i din budget. För den som vill ha ett enkelt, snabbt och pålitligt VPN med brett servernät är NordVPN svårslagen.",
 };
 
-export default function Page() { return <ReviewPage data={data} />; }
+export default async function Page() {
+  const pricing = await fetchReviewPricing("nordvpn");
+  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+}
