@@ -1,7 +1,7 @@
 export enum UserProfile {
   StreamingAndTravel = 1,
   MaxPrivacy = 2,
-  Paranoid = 3,
+  BestOverall = 3,
 }
 
 export enum JurisdictionRisk {

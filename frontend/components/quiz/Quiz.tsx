@@ -43,19 +43,19 @@ const PROFILES = [
     keywords:    ["No-logs", "Auditerad", "Anonym betalning"],
   },
   {
-    profile:     UserProfile.Paranoid,
-    icon:        "🛡️",
+    profile:     UserProfile.BestOverall,
+    icon:        "⭐",
     accent:      "slate" as const,
-    title:       "Super User",
-    description: "Du vill ha absolut maximal integritet. Öppen källkod, multihop och Tor-stöd väger tyngre än pris.",
-    keywords:    ["Öppen källkod", "Multihop", "Tor-stöd"],
+    title:       "Vår rekommendation",
+    description: "Vi har vägt privacy, pris, hastighet och streaming för att hitta den bästa VPN:en totalt sett.",
+    keywords:    ["Bäst totalt", "Balanserad", "Redaktionens val"],
   },
 ] as const;
 
 const PROFILE_LABELS: Record<UserProfile, string> = {
   [UserProfile.StreamingAndTravel]: "Netflix & Resor",
   [UserProfile.MaxPrivacy]:         "Max Privacy",
-  [UserProfile.Paranoid]:           "Super User",
+  [UserProfile.BestOverall]:        "Vår rekommendation",
 };
 
 // ---------------------------------------------------------------------------

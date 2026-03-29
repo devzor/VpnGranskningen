@@ -8,6 +8,6 @@ public enum UserProfile
     /// <summary>No-logs, audit, jurisdiktion, anonyma betalningar.</summary>
     MaxPrivacy = 2,
 
-    /// <summary>Absolut högsta privacy – pris är sekundärt.</summary>
-    Paranoid = 3,
+    /// <summary>Bästa VPN totalt sett – balans mellan privacy, pris, hastighet och funktioner.</summary>
+    BestOverall = 3,
 }

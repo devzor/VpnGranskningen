@@ -22,7 +22,7 @@ public static class RecommendationService
     {
         UserProfile.StreamingAndTravel => ScoreStreaming(p),
         UserProfile.MaxPrivacy         => ScorePrivacy(p),
-        UserProfile.Paranoid           => ScoreParanoid(p),
+        UserProfile.BestOverall        => ScoreBestOverall(p),
         _                              => throw new ArgumentOutOfRangeException(nameof(profile)),
     };
 
@@ -101,27 +101,53 @@ public static class RecommendationService
     }
 
     // -------------------------------------------------------------------------
-    // Paranoid (max 100p)
-    // Viktning: privacy-grund 40p | avancerade features 40p | öppen källkod 20p
-    // Pris ignoreras helt.
+    // Vår rekommendation / Best Overall (max 100p)
+    // Viktning: privacy 30p | pris/värde 25p | hastighet 20p | streaming 15p | features 10p
     // -------------------------------------------------------------------------
-    private static int ScoreParanoid(VpnProvider p)
+    private static int ScoreBestOverall(VpnProvider p)
     {
-        // Baspoäng från MaxPrivacy (skalas till 40p)
-        var privacyBase = (int)Math.Round(ScorePrivacy(p) * 0.4);
-
-        var score = privacyBase;
+        var score = 0;
+        var priv = p.Privacy;
         var feat = p.Features;
 
-        // Avancerade features (40p)
-        if (feat.HasDoubleVpn)      score += 12;
-        if (feat.HasTorOverVpn)     score += 12;
-        if (feat.HasObfuscation)    score += 10;
-        if (feat.HasKillSwitch)     score += 4;
-        if (feat.HasSplitTunneling) score += 2;
+        // Privacy (30p)
+        if (priv.HasNoLogs) score += 10;
+        if (priv.IsAudited) score += 10;
+        score += priv.JurisdictionRisk switch
+        {
+            JurisdictionRisk.Low    => 8,
+            JurisdictionRisk.Medium => 4,
+            _                       => 0,
+        };
+        if (priv.AcceptsCrypto) score += 2;
 
-        // Öppen källkod (20p) – absolut krav för paranoida användare
-        if (p.Privacy.IsOpenSource) score += 20;
+        // Pris/värde (25p) – belönar lågt ettårspris
+        score += p.Pricing.OneYearSubscriptionIntroPricePerMonth switch
+        {
+            <= 3m  => 25,
+            <= 5m  => 18,
+            <= 7m  => 11,
+            <= 10m => 5,
+            _      => 0,
+        };
+
+        // Hastighet (20p)
+        score += (int)Math.Round(p.SpeedScore * 2.0);   // 1–10 → 2–20p
+
+        // Streaming (15p)
+        score += p.StreamingSupport switch
+        {
+            StreamingSupport.Full    => 15,
+            StreamingSupport.Partial => 7,
+            _                        => 0,
+        };
+
+        // Features (10p)
+        if (feat.HasKillSwitch)      score += 3;
+        if (feat.HasSplitTunneling)  score += 2;
+        if (feat.HasObfuscation)     score += 2;
+        if (feat.HasDoubleVpn)       score += 2;
+        if (feat.HasDnsLeakProtection) score += 1;
 
         return Math.Clamp(score, 0, 100);
     }
@@ -133,7 +159,7 @@ public static class RecommendationService
     {
         UserProfile.StreamingAndTravel => BuildStreamingMotivation(p),
         UserProfile.MaxPrivacy         => BuildPrivacyMotivation(p),
-        UserProfile.Paranoid           => BuildParanoidMotivation(p),
+        UserProfile.BestOverall        => BuildBestOverallMotivation(p),
         _                              => string.Empty,
     };
 
@@ -162,14 +188,18 @@ public static class RecommendationService
         return parts.Count > 0 ? string.Join(", ", parts) + "." : "god integritetsprofil.";
     }
 
-    private static string BuildParanoidMotivation(VpnProvider p)
+    private static string BuildBestOverallMotivation(VpnProvider p)
     {
         var parts = new List<string>();
-        var feat = p.Features;
-        if (p.Privacy.IsOpenSource)    parts.Add("öppen källkod");
-        if (feat.HasTorOverVpn)        parts.Add("Tor-stöd");
-        if (feat.HasDoubleVpn)         parts.Add("multihop");
-        if (feat.HasObfuscation)       parts.Add("obfuskering");
-        return parts.Count > 0 ? string.Join(", ", parts) + "." : "stark privacy-profil.";
+        var priv = p.Privacy;
+        if (priv.HasNoLogs && priv.IsAudited)
+            parts.Add("verifierad no-logs");
+        if (p.Pricing.OneYearSubscriptionIntroPricePerMonth <= 5m)
+            parts.Add($"bra pris ({p.Pricing.OneYearSubscriptionIntroPricePerMonth:F2} USD/mån)");
+        if (p.SpeedScore >= 8)
+            parts.Add("hög hastighet");
+        if (p.StreamingSupport == StreamingSupport.Full)
+            parts.Add("utmärkt streamingstöd");
+        return parts.Count > 0 ? string.Join(", ", parts) + "." : "stark allround-VPN.";
     }
 }
