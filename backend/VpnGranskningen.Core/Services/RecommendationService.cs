@@ -169,7 +169,7 @@ public static class RecommendationService
         if (p.StreamingSupport == StreamingSupport.Full)
             parts.Add("utmärkt streamingstöd");
         if (p.Pricing.OneYearSubscriptionIntroPricePerMonth <= 5m)
-            parts.Add($"lågt pris ({p.Pricing.OneYearSubscriptionIntroPricePerMonth:F2} USD/mån)");
+            parts.Add($"lågt pris ({p.Pricing.OneYearSubscriptionIntroPricePerMonth!.Value:F2} USD/mån)");
         if (p.SpeedScore >= 8)
             parts.Add("hög hastighet");
         return parts.Count > 0 ? string.Join(", ", parts) + "." : "solid allround-VPN.";
@@ -195,7 +195,7 @@ public static class RecommendationService
         if (priv.HasNoLogs && priv.IsAudited)
             parts.Add("verifierad no-logs");
         if (p.Pricing.OneYearSubscriptionIntroPricePerMonth <= 5m)
-            parts.Add($"bra pris ({p.Pricing.OneYearSubscriptionIntroPricePerMonth:F2} USD/mån)");
+            parts.Add($"bra pris ({p.Pricing.OneYearSubscriptionIntroPricePerMonth!.Value:F2} USD/mån)");
         if (p.SpeedScore >= 8)
             parts.Add("hög hastighet");
         if (p.StreamingSupport == StreamingSupport.Full)

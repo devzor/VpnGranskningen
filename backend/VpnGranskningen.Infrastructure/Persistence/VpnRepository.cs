@@ -138,8 +138,8 @@ public sealed class VpnRepository(IDbConnectionFactory connectionFactory) : IVpn
         // Från vpn_provider_pricing
         public decimal  MonthlyIntroPrice                           { get; init; }
         public decimal  MonthlyRegularPrice                         { get; init; }
-        public decimal  OneYearSubscriptionIntroPricePerMonth       { get; init; }
-        public decimal  OneYearSubscriptionRegularPricePerMonth     { get; init; }
+        public decimal? OneYearSubscriptionIntroPricePerMonth       { get; init; }
+        public decimal? OneYearSubscriptionRegularPricePerMonth     { get; init; }
         public int?     OneYearBonusMonths                          { get; init; }
         public decimal? TwoYearSubscriptionIntroPricePerMonth       { get; init; }
         public decimal? TwoYearSubscriptionRegularPricePerMonth     { get; init; }

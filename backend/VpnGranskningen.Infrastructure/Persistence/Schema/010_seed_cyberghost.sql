@@ -63,7 +63,7 @@ ON CONFLICT (vpn_provider_id, link_type) DO UPDATE SET url = EXCLUDED.url;
 
 -- =============================================================================
 -- vpn_provider_pricing (SEK/mån)
--- Månadsplan:  ~109 SEK
+-- Månadsplan:  ~163 SEK
 -- 1-år:         ~44 SEK intro / ~99 SEK ordinarie
 -- 2-år + 3 mån: ~29 SEK intro / ~99 SEK ordinarie
 -- =============================================================================
@@ -75,7 +75,7 @@ INSERT INTO vpn_provider_pricing (
 )
 SELECT
     vpn_provider_id,
-    109,  109,
+    163,  163,
     44,   99,  NULL,
     29,   99,  3
 FROM vpn_provider WHERE slug = 'cyberghost'

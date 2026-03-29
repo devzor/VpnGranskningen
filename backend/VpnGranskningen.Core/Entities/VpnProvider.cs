@@ -77,8 +77,8 @@ public class VpnPricing
     public decimal  MonthlyRegularPrice                     { get; set; }
 
     // 1-årsplan
-    public decimal  OneYearSubscriptionIntroPricePerMonth   { get; set; }
-    public decimal  OneYearSubscriptionRegularPricePerMonth { get; set; }
+    public decimal? OneYearSubscriptionIntroPricePerMonth   { get; set; }
+    public decimal? OneYearSubscriptionRegularPricePerMonth { get; set; }
     public int?     OneYearBonusMonths                      { get; set; }
 
     // 2-årsplan

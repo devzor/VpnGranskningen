@@ -58,9 +58,9 @@ const data: ReviewData = {
     },
   ],
   pricing: [
-    { label: "Månadsvis",    price: "109 kr/mån" },
-    { label: "1 år (intro)", price: "44 kr/mån" },
-    { label: "2 år (intro)", price: "29 kr/mån" },
+    { label: "Månadsvis",    price: "163 kr/mån" },
+    { label: "1 år",         price: "Erbjuds ej" },
+    { label: "2 år (intro)", price: "29 kr/mån"  },
   ],
   conclusion: "CyberGhost är ett bra streaming-VPN (66/100) med ett imponerande servernät och dedikerade streamingservrar. Privacy-poängen (69/100) är godkänd men Super User-poängen (34/100) är låg – det är inte rätt val för den som prioriterar avancerad integritet. Den 45-dagars garantin gör det riskfritt att testa.",
 };

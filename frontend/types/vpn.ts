@@ -25,8 +25,8 @@ export interface VpnSummaryDto {
   affiliateUrl: string | null;
   monthlyIntroPrice: number;
   monthlyRegularPrice: number;
-  oneYearSubscriptionIntroPricePerMonth: number;
-  oneYearSubscriptionRegularPricePerMonth: number;
+  oneYearSubscriptionIntroPricePerMonth: number | null;
+  oneYearSubscriptionRegularPricePerMonth: number | null;
   oneYearBonusMonths: number | null;
   twoYearSubscriptionIntroPricePerMonth: number | null;
   twoYearSubscriptionRegularPricePerMonth: number | null;
