@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "protonvpn",
   name:    "Proton VPN",
-  tagline: "52 kr/mån (1 år) · WireGuard · Schweiz · Gratis nivå",
+  tagline: "522 kr/mån (1 år) · WireGuard · Schweiz · Gratis nivå",
   intro:   "Proton VPN kommer från samma team som skapade ProtonMail och är baserat i Genève, Schweiz. Med öppen källkod, Tor over VPN, ett gratis abonnemang utan datagräns och ett av de mest imponerande poängen i vår Paranoid-modell (95/100) är det ett av de starkaste integritetsalternativen på marknaden.",
   mainUrl: "https://protonvpn.com/pricing",
   scores: { streaming: 66, privacy: 87, paranoid: 95 },
@@ -65,6 +65,14 @@ const data: ReviewData = {
 };
 
 export default async function Page() {
-  const pricing = await fetchReviewPricing("protonvpn");
-  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+  const result = await fetchReviewPricing("protonvpn");
+  if (!result) return <ReviewPage data={data} />;
+  const taglineParts = data.tagline.split(" · ");
+  taglineParts[0] = result.taglinePrice;
+  return <ReviewPage data={{
+    ...data,
+    pricing: result.pricing,
+    tagline: taglineParts.join(" · "),
+    facts: [[result.priceFact.label, result.priceFact.value], ...data.facts.slice(1)],
+  }} />;
 }

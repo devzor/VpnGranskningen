@@ -19,17 +19,42 @@ function row(baseLabel: string, introPrice: number | null | undefined): { label:
   return { label: `${baseLabel} (intro)`, price: `${Math.round(introPrice)} kr/mån` };
 }
 
-export async function fetchReviewPricing(slug: string): Promise<{ label: string; price: string }[] | null> {
+export type ReviewPricingResult = {
+  pricing: { label: string; price: string }[];
+  priceFact: { label: string; value: string };
+  taglinePrice: string;
+};
+
+function bestPriceInfo(vpn: VpnSummaryDto): { taglinePrice: string; factLabel: string; factValue: string } {
+  if (vpn.twoYearSubscriptionIntroPricePerMonth != null) {
+    const p = Math.round(vpn.twoYearSubscriptionIntroPricePerMonth);
+    return { taglinePrice: `${p} kr/mån (2 år)`, factLabel: "Pris (intro)", factValue: `${p} kr/mån (2 år)` };
+  }
+  if (vpn.oneYearSubscriptionIntroPricePerMonth != null) {
+    const p = Math.round(vpn.oneYearSubscriptionIntroPricePerMonth);
+    return { taglinePrice: `${p} kr/mån (1 år)`, factLabel: "Pris (intro)", factValue: `${p} kr/mån (1 år)` };
+  }
+  const p = Math.round(vpn.monthlyIntroPrice);
+  return { taglinePrice: `${p} kr/mån`, factLabel: "Pris", factValue: `${p} kr/mån` };
+}
+
+export async function fetchReviewPricing(slug: string): Promise<ReviewPricingResult | null> {
   try {
     const vpn = await fetchVpn(slug);
     const monthly = vpn.monthlyIntroPrice != null
       ? { label: "Månadsvis", price: `${Math.round(vpn.monthlyIntroPrice)} kr/mån` }
       : { label: "Månadsvis", price: "Erbjuds ej" };
-    return [
+    const pricing = [
       monthly,
       row("1 år", vpn.oneYearSubscriptionIntroPricePerMonth),
       row("2 år", vpn.twoYearSubscriptionIntroPricePerMonth),
     ];
+    const best = bestPriceInfo(vpn);
+    return {
+      pricing,
+      priceFact: { label: best.factLabel, value: best.factValue },
+      taglinePrice: best.taglinePrice,
+    };
   } catch {
     return null;
   }

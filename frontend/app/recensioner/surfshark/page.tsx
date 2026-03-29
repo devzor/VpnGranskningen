@@ -66,6 +66,14 @@ const data: ReviewData = {
 };
 
 export default async function Page() {
-  const pricing = await fetchReviewPricing("surfshark");
-  return <ReviewPage data={pricing ? { ...data, pricing } : data} />;
+  const result = await fetchReviewPricing("surfshark");
+  if (!result) return <ReviewPage data={data} />;
+  const taglineParts = data.tagline.split(" · ");
+  taglineParts[0] = result.taglinePrice;
+  return <ReviewPage data={{
+    ...data,
+    pricing: result.pricing,
+    tagline: taglineParts.join(" · "),
+    facts: [[result.priceFact.label, result.priceFact.value], ...data.facts.slice(1)],
+  }} />;
 }
