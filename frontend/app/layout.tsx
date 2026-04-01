@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 
 const geist = Geist({ subsets: ["latin"] });
 
-const SITE_URL = "https://frontend-production-67ff.up.railway.app";
+const SITE_URL = "https://vpngranskningen.se";
 
 export const metadata: Metadata = {
   title: {
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd – utan dolda provisioner.",
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
+  keywords: ["bästa VPN Sverige", "VPN recension", "VPN jämförelse", "no-logs VPN", "VPN integritet", "billig VPN Sverige"],
   openGraph: {
     type:        "website",
     locale:      "sv_SE",
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
     description: "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd – utan dolda provisioner.",
   },
   twitter: {
-    card:        "summary",
+    card:        "summary_large_image",
     title:       "VpnGranskningen – Bästa VPN i Sverige 2026",
-    description: "Oberoende granskning av bästa VPN i Sverige 2026.",
+    description: "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris och jurisdiktion – utan dolda provisioner.",
   },
   robots: {
     index:          true,
@@ -36,10 +37,36 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "VpnGranskningen",
+  url: SITE_URL,
+  description: "Oberoende granskning av bästa VPN i Sverige 2026.",
+  inLanguage: "sv-SE",
+  publisher: {
+    "@type": "Organization",
+    name: "VpnGranskningen",
+    url: SITE_URL,
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/recensioner`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="sv">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

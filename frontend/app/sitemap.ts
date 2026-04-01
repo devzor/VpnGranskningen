@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const SITE_URL = "https://frontend-production-67ff.up.railway.app";
+const SITE_URL = "https://vpngranskningen.se";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified:    new Date(),
       changeFrequency: "weekly",
       priority:        1.0,
+    },
+    {
+      url:             `${SITE_URL}/recensioner`,
+      lastModified:    new Date(),
+      changeFrequency: "weekly",
+      priority:        0.9,
     },
     {
       url:             `${SITE_URL}/vad-ar-vpn`,

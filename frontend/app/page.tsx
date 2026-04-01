@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Quiz from "@/components/quiz/Quiz";
+
+export const metadata: Metadata = {
+  title: "VpnGranskningen – Bästa VPN i Sverige 2026",
+  description:
+    "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title:       "VpnGranskningen – Bästa VPN i Sverige 2026",
+    description: "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
+    url:         "/",
+  },
+};
 
 const TRUST_CHIPS = [
   { icon: "✓", text: "12 leverantörer granskade" },
