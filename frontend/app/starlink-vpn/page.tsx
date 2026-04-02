@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Starlink och VPN – surfar du säkrare med satellit?",
   description:
-    "Ger Starlink bättre integritet och skydd mot myndighetsspårning jämfört med vanligt bredband? Vi reder ut vad Starlink faktiskt erbjuder – och var en VPN fortfarande behövs.",
+    "Ger Starlink bättre integritet och anonymitet online jämfört med vanligt bredband? Vi reder ut vad Starlink faktiskt erbjuder – och var en VPN fortfarande behövs.",
   alternates: { canonical: "/starlink-vpn" },
   openGraph: {
     title: "Starlink och VPN – surfar du säkrare med satellit?",
     description:
-      "Ger Starlink bättre integritet och skydd mot myndighetsspårning jämfört med vanligt bredband?",
+      "Ger Starlink bättre integritet och anonymitet online jämfört med vanligt bredband?",
     url: "/starlink-vpn",
   },
 };
@@ -28,10 +28,10 @@ export default function StarlinkVpnPage() {
 
           <Section title="Det korta svaret">
             <p>
-              Nej – Starlink ger inte bättre skydd mot myndighetsspårning jämfört
-              med vanligt bredband. Starlink är en internetleverantör precis som
-              Telia eller Comhem, och lyder under lagar som kräver att de samarbetar
-              med myndigheter om det finns rättsliga skäl.
+              Nej – Starlink ger inte bättre integritet eller anonymitet online
+              jämfört med vanligt bredband. Starlink är en internetleverantör
+              precis som Telia eller Comhem, med samma möjlighet att se din trafik
+              och koppla den till dig som person.
             </p>
             <p>
               Vill du skydda din integritet online spelar det liten roll vilken
@@ -55,8 +55,8 @@ export default function StarlinkVpnPage() {
                 text="Tidpunkter, datamängder och anslutna domäner kan registreras av Starlink på samma sätt som av andra leverantörer."
               />
               <UsageItem
-                title="Svenska myndigheter kan begära uppgifter"
-                text="Genom internationella rättshjälpsavtal (MLAT) kan svenska myndigheter begära trafikdata från utländska bolag om de har rättsliga skäl."
+                title="Din trafik kan kopplas till dig"
+                text="Starlink loggar anslutningar på samma sätt som andra ISP:er. Din aktivitet online är inte anonym bara för att du använder satellit."
               />
             </ul>
           </Section>
