@@ -30,11 +30,12 @@ const data: ReviewData = {
     ["Servrar",       "Ca 100 i 30 länder"],
     ["Enheter",       "Obegränsat"],
     ["Streaming",     "Fullt stöd"],
+    ["SVT Play",      "Fungerar pålitligt"],
   ],
   pros: [
     "No-logs bevisad i verklig domstolsförhandling 2017",
     "Äger sin egna hårdvara – ingen tredjeparts datacenter",
-    "Fullt streamingstöd för Netflix, Disney+, BBC iPlayer m.fl.",
+    "Fullt streamingstöd för Netflix, SVT Play, Disney+, BBC iPlayer m.fl.",
     "Obegränsat enheter",
     "Transparensrapport publiceras regelbundet",
     "Multihop ingår",

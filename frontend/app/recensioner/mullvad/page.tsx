@@ -32,6 +32,7 @@ const data: ReviewData = {
     ["Servrar",        "Ca 700 i 50 länder"],
     ["Enheter",        "5 samtidigt"],
     ["Streaming",      "Delvis"],
+    ["SVT Play",       "Delvis – varierar"],
   ],
   pros: [
     "Öppen källkod – alla appar granskas publikt",
@@ -44,7 +45,7 @@ const data: ReviewData = {
     "Multihop och Shadowsocks för obfuskering",
   ],
   cons: [
-    "Streaming är inte prioriterat",
+    "Streaming är inte prioriterat – SVT Play fungerar ibland men garanteras inte",
     "Bara 5 simultana enheter",
     "Ingen dedikerad IP-adress",
     "Sverige – 14 Eyes-land",

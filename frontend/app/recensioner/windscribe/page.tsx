@@ -30,6 +30,8 @@ const data: ReviewData = {
     ["Servrar",       "480 i 69 länder"],
     ["Enheter",       "Obegränsat"],
     ["Gratis nivå",   "10 GB/mån"],
+    ["Streaming",     "Delvis"],
+    ["SVT Play",      "Ej verifierat"],
   ],
   pros: [
     "Generös gratis nivå – 10 GB/mån utan kreditkort",

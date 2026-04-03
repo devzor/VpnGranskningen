@@ -30,11 +30,12 @@ const data: ReviewData = {
     ["Servrar",       "4 500 i 100 länder"],
     ["Enheter",       "Obegränsat"],
     ["Streaming",     "Fullt stöd"],
+    ["SVT Play",      "Fungerar pålitligt"],
   ],
   pros: [
     "Obegränsat antal enheter – bäst för familjer",
     "26 kr/mån på 2-årsplan – ett av marknadens lägsta priser",
-    "Fullt streamingstöd för Netflix, Disney+, BBC iPlayer m.fl.",
+    "Fullt streamingstöd för Netflix, SVT Play, Disney+, BBC iPlayer m.fl.",
     "Multihop (Double VPN) ingår",
     "CleanWeb – inbyggd annonsblockerare",
     "Camouflage Mode för obfuskering",

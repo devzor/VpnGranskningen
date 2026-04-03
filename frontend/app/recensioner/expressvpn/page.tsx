@@ -30,10 +30,11 @@ const data: ReviewData = {
     ["Servrar",       "3 000 i 105 länder"],
     ["Enheter",       "8 samtidigt"],
     ["Streaming",     "Fullt stöd"],
+    ["SVT Play",      "Fungerar pålitligt"],
   ],
   pros: [
     "Lightway-protokollet – snabbast i klassen",
-    "Konsekvent streamingstöd för Netflix, BBC iPlayer m.fl.",
+    "Konsekvent streamingstöd för Netflix, SVT Play, BBC iPlayer m.fl.",
     "KPMG-audit 2025 – no-logs verifierad av Big Four",
     "Brittiska Jungfruöarna – utanför 14 Eyes",
     "Finns på fler plattformar än de flesta (router, TV m.m.)",

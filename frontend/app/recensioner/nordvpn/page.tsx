@@ -30,6 +30,7 @@ const data: ReviewData = {
     ["Servrar",      "7 300 i 118 länder"],
     ["Enheter",      "10 samtidigt"],
     ["Streaming",    "Fullt stöd"],
+    ["SVT Play",     "Fungerar pålitligt"],
   ],
   pros: [
     "7 300 servrar i 118 länder – ett av de bredaste nätverken",

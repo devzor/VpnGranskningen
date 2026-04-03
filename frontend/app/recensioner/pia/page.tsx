@@ -30,6 +30,7 @@ const data: ReviewData = {
     ["Servrar",       "35 000 i 91 länder"],
     ["Enheter",       "Obegränsat"],
     ["Streaming",     "Delvis (Netflix, Amazon)"],
+    ["SVT Play",      "Ej verifierat"],
   ],
   pros: [
     "22 kr/mån på 2-årsplan – bland de lägsta priserna",

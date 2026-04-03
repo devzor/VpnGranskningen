@@ -30,6 +30,8 @@ const data: ReviewData = {
     ["Servrar",       "Ca 65 i 45 länder"],
     ["Enheter",       "10 samtidigt"],
     ["Gratis nivå",   "Ja – begränsat"],
+    ["Streaming",     "Delvis"],
+    ["SVT Play",      "Ej verifierat"],
   ],
   pros: [
     "Eget protokoll – maskerar trafik som HTTPS",

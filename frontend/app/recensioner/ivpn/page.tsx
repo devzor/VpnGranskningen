@@ -30,6 +30,8 @@ const data: ReviewData = {
     ["Kontanter",     "Ja"],
     ["Servrar",       "Ca 100 i 40 länder"],
     ["Enheter",       "7 samtidigt"],
+    ["Streaming",     "Inget stöd"],
+    ["SVT Play",      "Inget stöd"],
   ],
   pros: [
     "100/100 i vår Privacy-modell – max poäng",

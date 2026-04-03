@@ -30,6 +30,7 @@ const data: ReviewData = {
     ["Servrar",       "Ca 40 i 15 länder"],
     ["Enheter",       "5 samtidigt"],
     ["Streaming",     "Inget stöd"],
+    ["SVT Play",      "Ej testat"],
   ],
   pros: [
     "RAM-only-servrar – ingen data kan sparas på disk",

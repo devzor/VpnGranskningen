@@ -29,7 +29,9 @@ const data: ReviewData = {
     ["Öppen källkod", "Ja"],
     ["Servrar",       "15 000 i 120 länder"],
     ["Enheter",       "10 samtidigt"],
-    ["Gratis nivå",   "Ja – ingen datагрens"],
+    ["Gratis nivå",   "Ja – ingen datagräns"],
+    ["Streaming",     "Fullt stöd"],
+    ["SVT Play",      "Fungerar pålitligt"],
   ],
   pros: [
     "Schweiz – utanför EU och 14 Eyes, stark dataskyddslag",

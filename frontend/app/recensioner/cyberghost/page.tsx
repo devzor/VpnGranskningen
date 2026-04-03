@@ -30,6 +30,8 @@ const data: ReviewData = {
     ["Servrar",       "10 000 i 100 länder"],
     ["Enheter",       "7 samtidigt"],
     ["Garanti",       "45 dagar pengarna tillbaka"],
+    ["Streaming",     "Fullt stöd"],
+    ["SVT Play",      "Fungerar"],
   ],
   pros: [
     "10 000 servrar – ett av de största nätverken",
@@ -55,7 +57,7 @@ const data: ReviewData = {
     },
     {
       title: "Dedikerade streamingservrar",
-      body:  "CyberGhosts dedikerade streamingservrar är optimerade för specifika tjänster – du väljer \"Netflix Sverige\" direkt i appen. Det minskar trial-and-error och ger pålitligare streaming.\n\nMed 10 000 servrar i 100 länder är täckningen god och serverlasterna generellt låga."
+      body:  "CyberGhosts dedikerade streamingservrar är optimerade för specifika tjänster – du väljer \"Netflix Sverige\" direkt i appen. Det minskar trial-and-error och ger pålitligare streaming.\n\nSVT Play fungerar via svenska servrar. Med 10 000 servrar i 100 länder är täckningen god och serverlasterna generellt låga."
     },
   ],
   pricing: [
