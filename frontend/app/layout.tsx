@@ -9,11 +9,11 @@ const SITE_URL = "https://vpngranskningen.se";
 
 export const metadata: Metadata = {
   title: {
-    default:  "VpnGranskningen – Bästa VPN i Sverige 2026",
+    default:  "VpnGranskningen – Bästa VPN för Sverige 2026",
     template: "%s – VpnGranskningen",
   },
   description:
-    "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd – utan dolda provisioner.",
+    "Oberoende granskning av bästa VPN för Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd – utan dolda provisioner.",
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   keywords: ["bästa VPN Sverige", "VPN recension", "VPN jämförelse", "no-logs VPN", "VPN integritet", "billig VPN Sverige"],
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     locale:      "sv_SE",
     url:         SITE_URL,
     siteName:    "VpnGranskningen",
-    title:       "VpnGranskningen – Bästa VPN i Sverige 2026",
-    description: "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd – utan dolda provisioner.",
+    title:       "VpnGranskningen – Bästa VPN för Sverige 2026",
+    description: "Oberoende granskning av bästa VPN för Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd – utan dolda provisioner.",
   },
   twitter: {
     card:        "summary_large_image",
-    title:       "VpnGranskningen – Bästa VPN i Sverige 2026",
-    description: "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris och jurisdiktion – utan dolda provisioner.",
+    title:       "VpnGranskningen – Bästa VPN för Sverige 2026",
+    description: "Oberoende granskning av bästa VPN för Sverige 2026. Vi jämför no-logs-policy, pris och jurisdiktion – utan dolda provisioner.",
   },
   robots: {
     index:          true,
@@ -42,7 +42,7 @@ const jsonLd = {
   "@type": "WebSite",
   name: "VpnGranskningen",
   url: SITE_URL,
-  description: "Oberoende granskning av bästa VPN i Sverige 2026.",
+  description: "Oberoende granskning av bästa VPN för Sverige 2026.",
   inLanguage: "sv-SE",
   publisher: {
     "@type": "Organization",

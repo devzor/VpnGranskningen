@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Quiz from "@/components/quiz/Quiz";
 
 export const metadata: Metadata = {
-  title: "VpnGranskningen – Bästa VPN i Sverige 2026",
+  title: "VpnGranskningen – Bästa VPN för Sverige 2026",
   description:
-    "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
+    "Oberoende granskning av bästa VPN för Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
   alternates: { canonical: "/" },
   openGraph: {
-    title:       "VpnGranskningen – Bästa VPN i Sverige 2026",
-    description: "Oberoende granskning av bästa VPN i Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
+    title:       "VpnGranskningen – Bästa VPN för Sverige 2026",
+    description: "Oberoende granskning av bästa VPN för Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
     url:         "/",
   },
 };
@@ -31,7 +31,7 @@ export default function Home() {
               Oberoende granskning · Sverige 2026
             </p>
             <h1 className="text-3xl sm:text-5xl font-bold leading-tight tracking-tight">
-              Bästa VPN i Sverige 2026 –{" "}
+              Bästa VPN för Sverige 2026 –{" "}
               <span className="text-slate-400">utan reklamsnack</span>
             </h1>
             <p className="text-base text-gray-400 leading-relaxed max-w-xl">
