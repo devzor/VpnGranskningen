@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const TRUST_CHIPS = [
   { icon: "✓", text: "12 leverantörer granskade" },
   { icon: "✓", text: "Inga dolda provisioner" },
-  { icon: "✓", text: "Uppdaterat mars 2026" },
+  { icon: "✓", text: "Uppdaterat april 2026" },
 ];
 
 export default function Home() {

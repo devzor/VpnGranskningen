@@ -130,7 +130,7 @@ export default function ReviewPage({ data }: { data: ReviewData }) {
 
         {/* Rubrik */}
         <header className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Recension · Uppdaterad mars 2026</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Recension · Uppdaterad april 2026</p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight">{name}</h1>
           <p className="text-sm font-medium text-gray-500">{tagline}</p>
           <p className="text-base text-gray-600 leading-relaxed">{intro}</p>
