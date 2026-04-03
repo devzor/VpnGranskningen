@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { currentMonthYearCapitalized } from "@/lib/currentDate";
 
 export const metadata: Metadata = {
   title: "Våra recensioner",
@@ -37,7 +38,7 @@ export default function RecensionerIndex() {
         <main className="flex-1 min-w-0 space-y-12">
 
           <header className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Recensioner · April 2026</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Recensioner · {currentMonthYearCapitalized()}</p>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight">Våra recensioner</h1>
             <p className="text-base text-gray-600 leading-relaxed">
               Vi har granskat 12 VPN-leverantörer utifrån tre användarprofiler. Alla poäng beräknas automatiskt
