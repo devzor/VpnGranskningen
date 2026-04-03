@@ -28,10 +28,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-8">
           <div className="space-y-4 max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-              Oberoende VPN-granskning
+              Oberoende granskning · Sverige 2026
             </p>
             <h1 className="text-3xl sm:text-5xl font-bold leading-tight tracking-tight">
-              Hitta rätt VPN –{" "}
+              Bästa VPN i Sverige 2026 –{" "}
               <span className="text-slate-400">utan reklamsnack</span>
             </h1>
             <p className="text-base text-gray-400 leading-relaxed max-w-xl">
