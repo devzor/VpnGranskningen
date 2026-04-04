@@ -33,7 +33,7 @@ export default function Header() {
           href="/"
           className="font-bold text-white tracking-tight hover:text-gray-300 transition-colors"
         >
-          VpnGranskningen
+          VpnGranskningen.se
         </Link>
 
         {/* Desktop nav */}
