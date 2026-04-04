@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, VpnSummaryDto } from "@/types/vpn";
 
+const LOGO_URLS: Record<string, string> = {
+  mullvad: "/logos/mullvad.svg",
+};
+
 const REVIEW_URLS: Record<string, string> = {
   nordvpn:    "/recensioner/nordvpn",
   mullvad:    "/recensioner/mullvad",
@@ -95,6 +99,7 @@ export default function VpnCard(props: VpnCardProps) {
   const streaming  = streamingLabel(provider.streamingSupport);
   const href       = provider.priceUrl ?? provider.affiliateUrl ?? provider.mainUrl ?? undefined;
   const reviewUrl  = REVIEW_URLS[provider.slug] ?? null;
+  const logoUrl    = provider.logoUrl ?? LOGO_URLS[provider.slug] ?? null;
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-6 transition-all duration-200 hover:shadow-lg hover:border-gray-300">
@@ -107,10 +112,10 @@ export default function VpnCard(props: VpnCardProps) {
           {/* Namn + score */}
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-3">
-              {provider.logoUrl && (
+              {logoUrl && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={provider.logoUrl}
+                  src={logoUrl}
                   alt={`${provider.name} logotyp`}
                   width={36}
                   height={36}
