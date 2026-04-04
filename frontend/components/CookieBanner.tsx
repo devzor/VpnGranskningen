@@ -34,10 +34,9 @@ export default function CookieBanner() {
         </p>
         <button
           onClick={dismiss}
-          className="shrink-0 text-gray-400 hover:text-white text-xl leading-none px-2 transition-colors"
-          aria-label="Stäng"
+          className="shrink-0 bg-white text-gray-900 font-semibold text-sm rounded-xl px-5 py-2 hover:bg-gray-200 transition-colors"
         >
-          ✕
+          Okej
         </button>
       </div>
     </div>
