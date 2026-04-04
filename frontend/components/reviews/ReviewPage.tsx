@@ -22,6 +22,7 @@ const ALL_REVIEWS = [
 export interface ReviewData {
   slug:         string;
   name:         string;
+  logoUrl?:     string;
   tagline:      string;
   intro:        string;
   mainUrl:      string;
@@ -112,7 +113,7 @@ function ReviewSidebar({ currentSlug }: { currentSlug: string }) {
 // Main
 // ---------------------------------------------------------------------------
 export default function ReviewPage({ data }: { data: ReviewData }) {
-  const { slug, name, tagline, intro, mainUrl, scores, scoreNotes, facts, pros, cons, sections, pricing, conclusion } = data;
+  const { slug, name, logoUrl, tagline, intro, mainUrl, scores, scoreNotes, facts, pros, cons, sections, pricing, conclusion } = data;
 
   return (
     <div className="min-h-screen bg-white">
@@ -132,7 +133,12 @@ export default function ReviewPage({ data }: { data: ReviewData }) {
         {/* Rubrik */}
         <header className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Recension · Uppdaterad {currentMonthYearCapitalized()}</p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight">{name}</h1>
+          <div className="flex items-center gap-3">
+            {logoUrl && (
+              <img src={logoUrl} alt={`${name} logotyp`} width={48} height={48} className="rounded-xl shrink-0" />
+            )}
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight">{name}</h1>
+          </div>
           <p className="text-sm font-medium text-gray-500">{tagline}</p>
           <p className="text-base text-gray-600 leading-relaxed">{intro}</p>
         </header>
