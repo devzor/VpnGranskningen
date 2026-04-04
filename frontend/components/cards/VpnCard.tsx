@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, VpnSummaryDto } from "@/types/vpn";
 
+const LOGO_CONTAINS_NAME = new Set(["nordvpn", "cyberghost", "protonvpn"]);
+
 const LOGO_URLS: Record<string, string> = {
   nordvpn:    "/logos/nordvpn.svg",
   mullvad:    "/logos/mullvad.svg",
@@ -111,6 +113,7 @@ export default function VpnCard(props: VpnCardProps) {
   const href       = provider.priceUrl ?? provider.affiliateUrl ?? provider.mainUrl ?? undefined;
   const reviewUrl  = REVIEW_URLS[provider.slug] ?? null;
   const logoUrl    = provider.logoUrl ?? LOGO_URLS[provider.slug] ?? null;
+  const showName   = !logoUrl || !LOGO_CONTAINS_NAME.has(provider.slug);
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 sm:p-6 transition-all duration-200 hover:shadow-lg hover:border-gray-300">
@@ -131,16 +134,20 @@ export default function VpnCard(props: VpnCardProps) {
                   className="h-8 w-auto max-w-[120px] object-contain shrink-0"
                 />
               )}
-              <div>
-                {topPick && (
-                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                    Bästa valet
-                  </span>
-                )}
-                <h2 className={`font-semibold text-gray-900 leading-tight ${topPick ? "text-xl mt-0.5" : "text-lg"}`}>
-                  {provider.name}
-                </h2>
-              </div>
+              {(showName || topPick) && (
+                <div>
+                  {topPick && (
+                    <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
+                      Bästa valet
+                    </span>
+                  )}
+                  {showName && (
+                    <h2 className={`font-semibold text-gray-900 leading-tight ${topPick ? "text-xl mt-0.5" : "text-lg"}`}>
+                      {provider.name}
+                    </h2>
+                  )}
+                </div>
+              )}
             </div>
             {score !== null && (
               <span className={`shrink-0 text-sm font-semibold border rounded-full px-3 py-0.5 ${scoreStyle(score)}`}>
