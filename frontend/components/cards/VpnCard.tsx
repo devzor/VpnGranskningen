@@ -2,7 +2,18 @@ import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, VpnSummaryDto } from "@/types/vpn";
 
 const LOGO_URLS: Record<string, string> = {
-  mullvad: "/logos/mullvad.svg",
+  nordvpn:    "/logos/nordvpn.svg",
+  mullvad:    "/logos/mullvad.svg",
+  protonvpn:  "/logos/protonvpn.svg",
+  surfshark:  "/logos/surfshark.svg",
+  expressvpn: "/logos/expressvpn.svg",
+  ivpn:       "/logos/ivpn.svg",
+  cyberghost: "/logos/cyberghost.svg",
+  pia:        "/logos/pia.svg",
+  windscribe: "/logos/windscribe.svg",
+  azirevpn:   "/logos/azirevpn.svg",
+  ovpn:       "/logos/ovpn.svg",
+  adguardvpn: "/logos/adguardvpn.svg",
 };
 
 const REVIEW_URLS: Record<string, string> = {
