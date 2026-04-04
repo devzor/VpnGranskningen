@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "surfshark",
   name:    "Surfshark",
+  logoUrl: "/logos/surfshark.svg",
   tagline: "26 kr/mån (2 år) · WireGuard · Nederländerna · Obegränsat enheter",
   intro:   "Surfsharks starkaste kort är priset och antalet enheter: obegränsat antal enheter på ett konto gör det till det bästa familje-VPN:et på marknaden. Med 2-årsplanen på 26 kr/mån är det ett av de billigaste alternativen. Deloitte-audit 2023 bekräftar no-logs – men audiтen är inte färsk vilket kostar poäng i vår modell.",
   mainUrl: "https://surfshark.com/sv/vpn/pricing",

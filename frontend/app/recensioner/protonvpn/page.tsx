@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "protonvpn",
   name:    "Proton VPN",
+  logoUrl: "/logos/protonvpn.svg",
   tagline: "522 kr/mån (1 år) · WireGuard · Schweiz · Gratis nivå",
   intro:   "Proton VPN kommer från samma team som skapade ProtonMail och är baserat i Genève, Schweiz. Med öppen källkod, Tor over VPN, ett gratis abonnemang utan datagräns och ett av de mest imponerande poängen i vår Paranoid-modell (95/100) är det ett av de starkaste integritetsalternativen på marknaden.",
   mainUrl: "https://protonvpn.com/pricing",

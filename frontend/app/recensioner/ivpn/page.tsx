@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "ivpn",
   name:    "IVPN",
+  logoUrl: "/logos/ivpn.svg",
   tagline: "53 kr/mån (1 år) · WireGuard · Gibraltar · 100/100 Privacy",
   intro:   "IVPN är det enda VPN som uppnår 100/100 i vår Privacy-modell. Gibraltar-jurisdiktion (låg risk), Cure53-audit 2024, öppen källkod, kontantbetalning, warrant canary och multihop – alla brickor på plats. Det är okänt för många men är ett av de mest integritetsstarka alternativen som finns.",
   mainUrl: "https://www.ivpn.net/pricing/",

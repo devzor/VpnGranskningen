@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "pia",
   name:    "Private Internet Access",
+  logoUrl: "/logos/pia.svg",
   tagline: "22 kr/mån (2 år) · WireGuard · USA · Öppen källkod",
   intro:   "Private Internet Access (PIA) är ett av de billigaste VPN:erna med öppen källkod – och en av de äldsta aktörerna på marknaden. Med 35 000 servrar i 91 länder och obegränsat antal enheter ger det mycket för pengarna. USA-jurisdiktionen är den tydligaste nackdelen för privacy-medvetna användare.",
   mainUrl: "https://www.privateinternetaccess.com/pages/buy-vpn/",

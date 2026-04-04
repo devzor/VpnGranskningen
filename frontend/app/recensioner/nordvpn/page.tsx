@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "nordvpn",
   name:    "NordVPN",
+  logoUrl: "/logos/nordvpn.svg",
   tagline: "136 kr/mån · NordLynx · Deloitte-auditerad 2024",
   intro:   "NordVPN är marknadsledaren av en anledning: brett servernät med 7 300 servrar i 118 länder, snabb NordLynx-protokollet och konsekvent streamingstöd. Med Deloitte-audit 2024 och Panamas jurisdiktion är integritetsprofilen stark – men priset vid förnyelse är en nackdel.",
   mainUrl: "https://go.nordvpn.net/aff_c?offer_id=15&aff_id=144483&url_id=902",

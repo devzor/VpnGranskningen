@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "cyberghost",
   name:    "CyberGhost",
+  logoUrl: "/logos/cyberghost.svg",
   tagline: "29 kr/mån (2 år) · WireGuard · Rumänien · 45 dagar garanti",
   intro:   "CyberGhost lockar med ett av marknadens bredaste servernät – 10 000 servrar i 100 länder – och dedikerade streamingservrar optimerade för specifika tjänster. Den generösa 45-dagars pengarna-tillbaka-garantin gör det riskfritt att testa. Rumänsk jurisdiktion ger medelhög risk i vår modell.",
   mainUrl: "https://www.cyberghostvpn.com/sv/pricing",

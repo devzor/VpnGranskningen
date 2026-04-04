@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "expressvpn",
   name:    "ExpressVPN",
+  logoUrl: "/logos/expressvpn.svg",
   tagline: "70 kr/mån (1 år) · Lightway · Brittiska Jungfruöarna · KPMG-audit 2025",
   intro:   "ExpressVPN har länge positionerat sig som premium-valet och priset speglar det. Det egenutvecklade Lightway-protokollet levererar konstant hög hastighet och streamingstödet är branschens mest pålitliga. En KPMG-audit 2025 verifierar no-logs-policyn och Brittiska Jungfruöarna håller jurisdiktionsrisken låg.",
   mainUrl: "https://www.expressvpn.com/order",

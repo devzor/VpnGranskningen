@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "ovpn",
   name:    "OVPN",
+  logoUrl: "/logos/ovpn.svg",
   tagline: "42 kr/mån (1 år) · WireGuard · Sverige · Bevisad no-logs via domstol",
   intro:   "OVPN är en annan svensk aktör som äger sin egna hårdvara och har bevisat sin no-logs-policy på det starkaste möjliga sättet: i domstol. En svensk tingsrätt begärde ut data 2017 – och OVPN kunde inte lämna något eftersom det inte existerade. Streamingstödet är fullt och priset rimligt.",
   mainUrl: "https://www.ovpn.com/sv/pricing",

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "adguardvpn",
   name:    "AdGuard VPN",
+  logoUrl: "/logos/adguardvpn.svg",
   tagline: "25 kr/mån (2 år) · Eget protokoll · Cypern · Gratis nivå",
   intro:   "AdGuard VPN kommer från skaparna av AdGuard – en av de mest respekterade annonsblockerarna. Det egenutvecklade protokollet maskerar VPN-trafik som vanlig HTTPS, vilket gör det svårt att blockera. En Cure53-audit 2023 verifierar no-logs och Cypern ger medelhög jurisdiktionsrisk.",
   mainUrl: "https://adguard-vpn.com/license.html",
