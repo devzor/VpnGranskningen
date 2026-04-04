@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, VpnSummaryDto } from "@/types/vpn";
 
@@ -106,15 +107,26 @@ export default function VpnCard(props: VpnCardProps) {
 
           {/* Namn + score */}
           <div className="flex items-start justify-between gap-3">
-            <div>
-              {topPick && (
-                <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                  Bästa valet
-                </span>
+            <div className="flex items-center gap-3">
+              {provider.logoUrl && (
+                <Image
+                  src={provider.logoUrl}
+                  alt={`${provider.name} logotyp`}
+                  width={36}
+                  height={36}
+                  className="rounded-lg shrink-0"
+                />
               )}
-              <h2 className={`font-semibold text-gray-900 leading-tight ${topPick ? "text-xl mt-0.5" : "text-lg"}`}>
-                {provider.name}
-              </h2>
+              <div>
+                {topPick && (
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
+                    Bästa valet
+                  </span>
+                )}
+                <h2 className={`font-semibold text-gray-900 leading-tight ${topPick ? "text-xl mt-0.5" : "text-lg"}`}>
+                  {provider.name}
+                </h2>
+              </div>
             </div>
             {score !== null && (
               <span className={`shrink-0 text-sm font-semibold border rounded-full px-3 py-0.5 ${scoreStyle(score)}`}>
