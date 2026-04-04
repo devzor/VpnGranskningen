@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import CookieBanner from "@/components/CookieBanner";
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geist.className} antialiased bg-white text-gray-900`}>
         <Header />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
