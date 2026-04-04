@@ -135,7 +135,7 @@ export default function ReviewPage({ data }: { data: ReviewData }) {
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">Recension · Uppdaterad {currentMonthYearCapitalized()}</p>
           <div className="flex items-center gap-3">
             {logoUrl && (
-              <img src={logoUrl} alt={`${name} logotyp`} width={48} height={48} className="rounded-xl shrink-0" />
+              <img src={logoUrl} alt={`${name} logotyp`} className="h-10 w-auto max-w-[160px] object-contain shrink-0" />
             )}
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight">{name}</h1>
           </div>

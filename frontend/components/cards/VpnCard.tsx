@@ -128,9 +128,7 @@ export default function VpnCard(props: VpnCardProps) {
                 <img
                   src={logoUrl}
                   alt={`${provider.name} logotyp`}
-                  width={36}
-                  height={36}
-                  className="rounded-lg shrink-0"
+                  className="h-8 w-auto max-w-[120px] object-contain shrink-0"
                 />
               )}
               <div>
