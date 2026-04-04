@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, VpnSummaryDto } from "@/types/vpn";
 
@@ -109,7 +108,8 @@ export default function VpnCard(props: VpnCardProps) {
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-3">
               {provider.logoUrl && (
-                <Image
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
                   src={provider.logoUrl}
                   alt={`${provider.name} logotyp`}
                   width={36}
