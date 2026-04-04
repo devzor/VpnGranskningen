@@ -10,7 +10,7 @@ const LOGO_URLS: Record<string, string> = {
   ivpn:       "/logos/ivpn.svg",
   cyberghost: "/logos/cyberghost.svg",
   pia:        "/logos/pia.svg",
-  windscribe: "/logos/windscribe.svg",
+  windscribe: "/logos/windscribe.png",
   azirevpn:   "/logos/azirevpn.svg",
   ovpn:       "/logos/ovpn.svg",
   adguardvpn: "/logos/adguardvpn.svg",

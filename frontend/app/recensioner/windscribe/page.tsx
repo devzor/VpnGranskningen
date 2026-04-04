@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const data: ReviewData = {
   slug:    "windscribe",
   name:    "Windscribe",
-  logoUrl: "/logos/windscribe.svg",
+  logoUrl: "/logos/windscribe.png",
   tagline: "35 kr/mån (1 år) · WireGuard · Kanada · Gratis 10 GB/mån",
   intro:   "Windscribe är ett av de mer generösa gratis-VPN:erna: 10 GB per månad på gratisplanen och tillgång till servrar i 10 länder utan betalning. På betald plan erbjuder Windscribe öppen källkod, obegränsat enheter och ett brett utbud av obfuskeringsprotokoll inklusive Stealth och WStunnel. Kanada-jurisdiktion är en nackdel.",
   mainUrl: "https://windscribe.com/upgrade",
