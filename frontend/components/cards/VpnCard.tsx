@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { JurisdictionRisk, RecommendResultDto, StreamingSupport, VpnSummaryDto } from "@/types/vpn";
 
-const LOGO_CONTAINS_NAME = new Set(["nordvpn", "cyberghost", "protonvpn", "surfshark", "pia"]);
+const LOGO_CONTAINS_NAME = new Set(["nordvpn", "cyberghost", "protonvpn", "surfshark", "pia", "ivpn"]);
 
 const LOGO_URLS: Record<string, string> = {
   nordvpn:    "/logos/nordvpn.svg",
