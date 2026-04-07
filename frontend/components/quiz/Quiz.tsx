@@ -141,7 +141,7 @@ function VpnTable({ providers }: { providers: VpnSummaryDto[] }) {
         </thead>
         <tbody>
           {sorted.map((p, i) => {
-            const href = p.priceUrl ?? p.affiliateUrl ?? p.mainUrl ?? undefined;
+            const href = p.affiliateUrl ?? p.priceUrl ?? p.mainUrl ?? undefined;
             return (
               <tr key={p.slug} className={`border-b border-gray-50 hover:bg-slate-50 transition-colors ${i % 2 !== 0 ? "bg-gray-50/40" : ""}`}>
                 <td className="px-4 py-3.5 font-semibold text-gray-900 whitespace-nowrap">{p.name}</td>

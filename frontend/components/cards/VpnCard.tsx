@@ -110,7 +110,7 @@ export default function VpnCard(props: VpnCardProps) {
 
   const risk       = riskLabel(provider.jurisdictionRisk);
   const streaming  = streamingLabel(provider.streamingSupport);
-  const href       = provider.priceUrl ?? provider.affiliateUrl ?? provider.mainUrl ?? undefined;
+  const href       = provider.affiliateUrl ?? provider.priceUrl ?? provider.mainUrl ?? undefined;
   const reviewUrl  = REVIEW_URLS[provider.slug] ?? null;
   const logoUrl    = provider.logoUrl ?? LOGO_URLS[provider.slug] ?? null;
   const showName   = !logoUrl || !LOGO_CONTAINS_NAME.has(provider.slug);
