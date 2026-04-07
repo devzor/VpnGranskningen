@@ -40,6 +40,7 @@ export default function Header() {
             width={32}
             height={32}
             className="rounded"
+            unoptimized
           />
           VpnGranskningen.se
         </Link>
