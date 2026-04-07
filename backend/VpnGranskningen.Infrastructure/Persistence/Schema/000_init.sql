@@ -81,7 +81,7 @@ INSERT INTO vpn_provider (name, slug, affiliate_url, streaming_support, supporte
  '{"protocols":["WireGuard","Shadowsocks"],"has_kill_switch":true,"has_split_tunneling":true,"has_double_vpn":true,"has_tor_over_vpn":false,"has_obfuscation":true,"has_dns_leak_protection":true,"has_ad_blocker":true,"simultaneous_connections":5}',
  '{"windows":true,"mac_os":true,"linux":true,"ios":true,"android":true,"router":true,"browser_extension":true}'),
 
-('Proton VPN', 'protonvpn', NULL, 2,
+('Proton VPN', 'protonvpn', 'https://go.getproton.me/aff_c?offer_id=26&aff_id=17099', 2,
  '["Netflix","Disney+","BBC iPlayer","Amazon Prime","SVT Play"]',
  8, 15000, 120,
  'Schweizisk jurisdiktion, öppen källkod och gratis nivå. Stark kombination av privacy och användbarhet.',
