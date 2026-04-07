@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 const navLinks = [
@@ -31,8 +32,15 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
-          className="font-bold text-white tracking-tight hover:text-gray-300 transition-colors"
+          className="flex items-center gap-2 font-bold text-white tracking-tight hover:text-gray-300 transition-colors"
         >
+          <Image
+            src="/logos/logo.jpg"
+            alt="VpnGranskningen logotyp"
+            width={32}
+            height={32}
+            className="rounded"
+          />
           VpnGranskningen.se
         </Link>
 
