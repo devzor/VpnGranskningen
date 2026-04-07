@@ -2,6 +2,7 @@ using VpnGranskningen.Api.Endpoints;
 using VpnGranskningen.Infrastructure;
 using VpnGranskningen.Infrastructure.Persistence;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
