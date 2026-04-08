@@ -42,7 +42,7 @@ export default function Header() {
             className="rounded"
             unoptimized
           />
-          VpnGranskningen.se
+          VPNGranskningen.se
         </Link>
 
         {/* Desktop nav */}
