@@ -89,7 +89,7 @@ function PriceCell({ label, introPrice, regularPrice, bonusMonths }: {
         </span>
         <span className="text-sm text-gray-400">/mån</span>
       </div>
-      {bonusMonths != null && (
+      {bonusMonths != null && bonusMonths > 0 && (
         <span className="text-xs text-emerald-600 whitespace-nowrap">+{bonusMonths} mån gratis</span>
       )}
       {showRegular && (
