@@ -3,12 +3,12 @@ import Quiz from "@/components/quiz/Quiz";
 import { currentMonthYear } from "@/lib/currentDate";
 
 export const metadata: Metadata = {
-  title: "VpnGranskningen – Bästa VPN för Sverige 2026",
+  title: "VPN Granskningen - Top 10 Bästa VPN 2026",
   description:
     "Oberoende granskning av bästa VPN för Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
   alternates: { canonical: "/" },
   openGraph: {
-    title:       "VpnGranskningen – Bästa VPN för Sverige 2026",
+    title:       "VPN Granskningen - Top 10 Bästa VPN 2026",
     description: "Oberoende granskning av bästa VPN för Sverige 2026. Vi jämför no-logs-policy, pris, jurisdiktion och streamingstöd för 12 leverantörer – utan dolda provisioner.",
     url:         "/",
   },
