@@ -15,7 +15,7 @@ const data: ReviewData = {
   logoUrl: "/logos/cyberghost.webp",
   tagline: "29 kr/mån (2 år) · WireGuard · Rumänien · 45 dagar garanti",
   intro:   "CyberGhost lockar med ett av marknadens bredaste servernät – 10 000 servrar i 100 länder – och dedikerade streamingservrar optimerade för specifika tjänster. Den generösa 45-dagars pengarna-tillbaka-garantin gör det riskfritt att testa. Rumänsk jurisdiktion ger medelhög risk i vår modell.",
-  mainUrl: "https://www.cyberghostvpn.com/sv/pricing",
+  mainUrl: "https://www.cyberghostvpn.com/offer/vpngranskningen_r5baoql",
   scores: { streaming: 66, privacy: 69, paranoid: 34 },
   scoreNotes: {
     streaming: "Fullt streamingstöd (40p) + hastighet 8/10 (16p) + alla plattformar (10p). Pris 44 kr/mån > 10 ger 0p på prisvärde.",
