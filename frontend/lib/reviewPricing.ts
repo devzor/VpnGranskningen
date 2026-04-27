@@ -14,13 +14,32 @@ async function fetchVpn(slug: string): Promise<VpnSummaryDto> {
   return res.json();
 }
 
-function row(baseLabel: string, introPrice: number | null | undefined): { label: string; price: string } {
-  if (introPrice == null) return { label: baseLabel, price: "Erbjuds ej" };
-  return { label: `${baseLabel} (intro)`, price: `${Math.round(introPrice)} kr/mån` };
+export type PricingEntry = {
+  label: string;
+  price: string;
+  regularPrice?: string;
+  bonusMonths?: number | null;
+};
+
+function row(
+  label: string,
+  introPrice: number | null | undefined,
+  regularPrice: number | null | undefined,
+  bonusMonths?: number | null,
+): PricingEntry {
+  if (introPrice == null) return { label, price: "Erbjuds ej" };
+  const entry: PricingEntry = { label, price: `${Math.round(introPrice)} kr/mån` };
+  if (regularPrice != null && regularPrice !== introPrice) {
+    entry.regularPrice = `${Math.round(regularPrice)} kr/mån`;
+  }
+  if (bonusMonths != null && bonusMonths > 0) {
+    entry.bonusMonths = bonusMonths;
+  }
+  return entry;
 }
 
 export type ReviewPricingResult = {
-  pricing: { label: string; price: string }[];
+  pricing: PricingEntry[];
   priceFact: { label: string; value: string };
   taglinePrice: string;
 };
@@ -41,13 +60,10 @@ function bestPriceInfo(vpn: VpnSummaryDto): { taglinePrice: string; factLabel: s
 export async function fetchReviewPricing(slug: string): Promise<ReviewPricingResult | null> {
   try {
     const vpn = await fetchVpn(slug);
-    const monthly = vpn.monthlyIntroPrice != null
-      ? { label: "Månadsvis", price: `${Math.round(vpn.monthlyIntroPrice)} kr/mån` }
-      : { label: "Månadsvis", price: "Erbjuds ej" };
-    const pricing = [
-      monthly,
-      row("1 år", vpn.oneYearSubscriptionIntroPricePerMonth),
-      row("2 år", vpn.twoYearSubscriptionIntroPricePerMonth),
+    const pricing: PricingEntry[] = [
+      row("Månadsvis", vpn.monthlyIntroPrice, vpn.monthlyRegularPrice),
+      row("1 år", vpn.oneYearSubscriptionIntroPricePerMonth, vpn.oneYearSubscriptionRegularPricePerMonth, vpn.oneYearBonusMonths),
+      row("2 år", vpn.twoYearSubscriptionIntroPricePerMonth, vpn.twoYearSubscriptionRegularPricePerMonth, vpn.twoYearBonusMonths),
     ];
     const best = bestPriceInfo(vpn);
     return {

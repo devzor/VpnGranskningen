@@ -40,7 +40,7 @@ export interface ReviewData {
   pros:  string[];
   cons:  string[];
   sections: { title: string; body: string }[];
-  pricing: { label: string; price: string }[];
+  pricing: { label: string; price: string; regularPrice?: string; bonusMonths?: number | null }[];
   conclusion: string;
 }
 
@@ -232,10 +232,16 @@ export default function ReviewPage({ data }: { data: ReviewData }) {
         <section className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-900">Pris</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {pricing.map(({ label, price }) => (
+            {pricing.map(({ label, price, regularPrice, bonusMonths }) => (
               <div key={label} className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-center">
                 <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
                 <p className="text-lg font-bold text-gray-900 mt-1">{price}</p>
+                {bonusMonths != null && bonusMonths > 0 && (
+                  <p className="text-xs text-emerald-600 mt-0.5">+{bonusMonths} mån gratis</p>
+                )}
+                {regularPrice && (
+                  <p className="text-xs text-gray-400 mt-0.5">sedan {regularPrice}</p>
+                )}
               </div>
             ))}
           </div>
