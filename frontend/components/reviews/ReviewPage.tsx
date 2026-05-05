@@ -156,7 +156,7 @@ export default function ReviewPage({ data }: { data: ReviewData }) {
           <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 space-y-5">
             <ScoreBar label="Netflix & Resor"  score={scores.streaming} note={scoreNotes.streaming} />
             <ScoreBar label="Max Privacy"       score={scores.privacy}   note={scoreNotes.privacy}   />
-            <ScoreBar label="Super User"        score={scores.paranoid}  note={scoreNotes.paranoid}  />
+            <ScoreBar label="Vår rekommendation" score={scores.paranoid}  note={scoreNotes.paranoid}  />
           </div>
 
           <details className="rounded-xl border border-gray-200 text-sm">
@@ -184,7 +184,7 @@ export default function ReviewPage({ data }: { data: ReviewData }) {
                 </ul>
               </div>
               <div>
-                <p className="font-semibold text-gray-800 mb-1">Super User (max 100p)</p>
+                <p className="font-semibold text-gray-800 mb-1">Vår rekommendation (max 100p)</p>
                 <ul className="space-y-0.5 text-xs">
                   <li>Privacy-poäng × 0,4 (max 40p)</li>
                   <li>Multihop/Double VPN: 12p | Tor-stöd: 12p | Obfuskering: 10p</li>

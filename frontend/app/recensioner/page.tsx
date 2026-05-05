@@ -111,7 +111,7 @@ export default function RecensionerIndex() {
               <div className="rounded-2xl border border-gray-200 p-6 space-y-3">
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">🛡️</span>
-                  <h3 className="font-semibold text-gray-900">Super User <span className="text-gray-400 font-normal text-sm">(max 100p)</span></h3>
+                  <h3 className="font-semibold text-gray-900">Vår rekommendation <span className="text-gray-400 font-normal text-sm">(max 100p)</span></h3>
                 </div>
                 <p className="text-sm text-gray-600">För den som vill ha absolut maximal integritet. Öppen källkod och avancerade features väger tyngst. Pris ignoreras.</p>
                 <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 mt-2">
